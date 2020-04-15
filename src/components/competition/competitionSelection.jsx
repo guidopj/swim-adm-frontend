@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -11,17 +11,21 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'material-ui-image'
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
+import { withRouter } from 'react-router-dom';
+
+import { Link } from 'react-router-dom'
 
 import competitionSelectionStyles from './competitionSelectionStyles'
 
 import PoolImage from 'assets/images/pool.jpg'
 
-export default function CompetitionSelection() {
+const CompetitionSelection = props => {
   const classes = competitionSelectionStyles();
+  const [competitionName, setCompetitionName] = useState('');
 
-  const prepareNewCompetition = ev => {
+  const moveToCreation = ev => {
     ev.preventDefault()
-    console.log(ev.target.value)
+    props.history.push('/create')
   }
 
   return (
@@ -39,17 +43,18 @@ export default function CompetitionSelection() {
           <Typography component="h1" variant="h5">
             Select or Create a Competition
           </Typography>
-            <form className={classes.form} onSubmit={prepareNewCompetition}>
+            <form className={classes.form} onSubmit={moveToCreation}>
               <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="competitionName"
                 label="new competition name"
                 name="competition_name"
-                autoComplete="competition_name"
                 autoFocus
+                value={competitionName}
+                onChange={event => setCompetitionName(event.target.value)}
               />
               
               <Button
@@ -61,6 +66,7 @@ export default function CompetitionSelection() {
               >
                 Create
               </Button>
+              
             </form>
               <Divider className={classes.divider} />
               <List 
@@ -87,3 +93,5 @@ export default function CompetitionSelection() {
     </Grid>
   );
 }
+
+export default withRouter(CompetitionSelection)
