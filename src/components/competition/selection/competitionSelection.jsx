@@ -13,8 +13,6 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import { withRouter } from 'react-router-dom';
 
-import { Link } from 'react-router-dom'
-
 import competitionSelectionStyles from './competitionSelectionStyles'
 
 import PoolImage from 'assets/images/pool.jpg'
@@ -25,7 +23,10 @@ const CompetitionSelection = props => {
 
   const moveToCreation = ev => {
     ev.preventDefault()
-    props.history.push('/create')
+    props.history.push({
+      pathname: '/create',
+      state: { competitionName }
+    })
   }
 
   return (

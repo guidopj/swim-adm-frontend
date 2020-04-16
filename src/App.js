@@ -4,14 +4,14 @@ import {
   Route,
 } from "react-router-dom";
 
-import CompetitionSelection from 'components/competition/competitionSelection'
-import CompetitionCreation from 'components/competition/competitionCreation'
+import CompetitionSelectionContainer from 'components/competition/containers/competitionSelectionContainer'
+import CompetitionCreation from 'components/competition/creation/competitionCreation'
 
 function App() {
   return (
     <div className="App">
 				<Switch>
-					<Route path={'/'} component={CompetitionSelection} exact/>
+					<Route path={'/'} component={CompetitionSelectionContainer} exact/>
           <Route path={'/create'} component={CompetitionCreation} exact/>
         </Switch>
     </div>

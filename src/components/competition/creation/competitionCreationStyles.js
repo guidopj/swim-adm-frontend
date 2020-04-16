@@ -20,6 +20,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
     button: {
         marginLeft: theme.spacing(10)
+    },
+    actionButtons: {
+        justifyContent: "space-between"
     }
 
 }))
