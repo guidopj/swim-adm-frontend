@@ -18,6 +18,24 @@ const competitionActions = {
 			error,
 		}
 	},
+	createNewCompetition(data) {
+		return {
+			type: actionTypes.CREATE_NEW_COMPETITION,
+			data,
+		}
+	},
+	createNewCompetitionSuccess(payload) {
+		return {
+			type: actionTypes.CREATE_NEW_COMPETITION_SUCCESS,
+			payload,
+		}
+	},
+	createNewCompetitionFailure(error) {
+		return {
+			type: actionTypes.CREATE_NEW_COMPETITION_FAILURE,
+			error,
+		}
+	},
 }
 
 export default competitionActions

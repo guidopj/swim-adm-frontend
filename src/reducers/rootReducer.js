@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import competitionsReducer from './competitionsReducer'
 
-export default combineReducers({
+const rootReducer = combineReducers({
     competitions: competitionsReducer,
 });
+
+export default rootReducer

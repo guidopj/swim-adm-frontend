@@ -8,6 +8,11 @@ const competitionsReducer = (state = initialState, action) => {
             ...state,
             competitions: action.payload,      
         };
+        case actionTypes.CREATE_NEW_COMPETITION_SUCCESS:
+            return {
+                ...state,
+                competitions: [...state.competitions, action.payload]
+            };
         
         default:
             return state;
