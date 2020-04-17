@@ -33,13 +33,13 @@ import {
         },
       ];
 
-    const [endDate, setEndDate] = useState(Date.now());
-    const [startDate, setStartDate] = useState(Date.now());
+    const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'))
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
     const [selectedPoolMeters, setSelectedPoolMeters] = useState(25);
     const [clubName, setClubName] = useState('');
-    const [startTime, setStartTime] = useState(moment(new Date().getTime()));
-    const [inscriptionStartDate, setInscriptionStartDate] = useState(moment(Date.now()));
-    const [inscriptionEndDate, setInscriptionEndDate] = useState(moment(Date.now()));
+    const [startTime, setStartTime] = useState(moment().format('hh:mm:ss'));
+    const [inscriptionStartDate, setInscriptionStartDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
+    const [inscriptionEndDate, setInscriptionEndDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [numberOfLanes, setNumberOfLanes] = useState(5);
 
     const handlePoolMetersChange = event => setSelectedPoolMeters(event.target.value)
@@ -47,7 +47,7 @@ import {
     const createNewCompetition = ev => {
         ev.preventDefault()
         props.createNewCompetition({
-            competitionName: props.competitionName,
+            competition_name: props.competitionName,
             club_name: clubName,
             competition_start_date: startDate,
             competition_end_date: endDate,

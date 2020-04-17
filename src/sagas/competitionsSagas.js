@@ -10,7 +10,7 @@ function *createNewCompetition(data) {
 	try {
 		yield call(
 			competitionSync.createNewCompetition,
-			data
+			data.data
 		)
 		yield put(competitionActions.createNewCompetitionSuccess(data))
 	} catch (error) {
