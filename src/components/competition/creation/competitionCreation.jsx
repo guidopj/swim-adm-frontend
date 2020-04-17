@@ -16,6 +16,7 @@ import {
   import CardHeader from '@material-ui/core/CardHeader';
   import _ from 'lodash';
   import moment from 'moment'
+  import { withRouter } from 'react-router-dom';
 
   import competitionCreationStyles from './competitionCreationStyles'
 
@@ -37,7 +38,7 @@ import {
     const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
     const [selectedPoolMeters, setSelectedPoolMeters] = useState(25);
     const [clubName, setClubName] = useState('');
-    const [startTime, setStartTime] = useState(moment().format('hh:mm:ss'));
+    const [startTime, setStartTime] = useState(moment().format('HH:mm:ss'));
     const [inscriptionStartDate, setInscriptionStartDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [inscriptionEndDate, setInscriptionEndDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [numberOfLanes, setNumberOfLanes] = useState(5);
@@ -46,7 +47,7 @@ import {
 
     const createNewCompetition = ev => {
         ev.preventDefault()
-        props.createNewCompetition({
+        /* props.createNewCompetition({
             competition_name: props.competitionName,
             club_name: clubName,
             competition_start_date: startDate,
@@ -56,7 +57,10 @@ import {
             inscription_start_date: inscriptionStartDate,
             inscription_end_date: inscriptionEndDate,
             number_of_lanes: numberOfLanes
-        })
+        }) */
+        props.history.push({
+            pathname: '/teams',
+          })
     }
   
     return (
@@ -69,7 +73,7 @@ import {
                 <CardContent>
                     
                     <Grid container>
-                        <Grid item xs={4}>
+                        <Grid item lg={4} xs={12} md={6}>
                             <TextField
                                 id="club_name"
                                 label="Club Name"
@@ -83,7 +87,7 @@ import {
                             >
                             </TextField>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <TextField
                                 id="pool_meters"
                                 select
@@ -103,7 +107,7 @@ import {
                         
                         </Grid>
                         
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="competition_start_date"
@@ -117,7 +121,7 @@ import {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="competition_end_date"
@@ -131,20 +135,21 @@ import {
                                 />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <KeyboardTimePicker
                                 margin="normal"
                                 id="time-picker"
                                 label="Start Time"
                                 value={startTime}
                                 onChange={setStartTime}
+                                format="HH:mm:ss"
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
                                 }}
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={6} lg={4}>
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="inscription_start_date"
@@ -157,7 +162,7 @@ import {
                                 }}
                             />
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item md={6} xs={12} lg={4}>
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="inscription_End_date"
@@ -170,7 +175,7 @@ import {
                                 }}
                             />
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item md={6} xs={12} lg={4}>
                             <TextField
                                 id="number_of_lanes"
                                 select
@@ -190,7 +195,7 @@ import {
             </CardContent>
             <CardActions >
                 <Grid container justify="flex-start" spacing={4} className={classes.actionButtons}>
-                    <Grid item>
+                    <Grid item md={4} xs={12}>
                         <Button
                             onClick={createNewCompetition}
                             variant="contained"
@@ -198,14 +203,14 @@ import {
                             Create New Competition
                         </Button>
                     </Grid>
-                    <Grid item>
+                    <Grid item md={4} xs={12}>
                         <Button 
                             variant="contained"        
                         >
                             Clean All Fields
                         </Button>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={12} md={4}>
                         <Link to='/'>
                             <Button 
                                 variant="contained"        
@@ -223,4 +228,4 @@ import {
 );
 
 
-export default CompetitionCreation
+export default withRouter(CompetitionCreation)

@@ -1,9 +1,25 @@
 import axios from 'axios';
-const baseURL = 'http://localhost:8000/competitions'
+const baseURL = 'http://localhost:8000'
 
 async function createNewCompetition(data) {
     await axios.post(
-        `${baseURL}/create`, data
+        `${baseURL}/competitions/create`, data
+    ).then(response => {
+        return response
+      })
+}
+
+async function createNewTeam(data) {
+    await axios.post(
+        `${baseURL}/teams/create`, data
+    ).then(response => {
+        return response
+      })
+}
+
+async function createNewAthlete(data) {
+    await axios.post(
+        `${baseURL}/athletes/create`, data
     ).then(response => {
         return response
       })
@@ -11,4 +27,6 @@ async function createNewCompetition(data) {
 
 export default {
     createNewCompetition,
+    createNewTeam,
+    createNewAthlete,
 }

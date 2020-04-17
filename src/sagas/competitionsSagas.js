@@ -1,12 +1,14 @@
 import { takeLatest, takeEvery,call, put } from 'redux-saga/effects';
+
 import competitionActions from 'actions/competitionActions'
+import teamActions from 'actions/teamActions'
+import athleteActions from 'actions/athleteActions'
 
 import competitionSync from 'sync/competitionSync'
 import actionTypes from 'actions/types'
 
 
 function *createNewCompetition(data) {
-	console.log(data)
 	try {
 		yield call(
 			competitionSync.createNewCompetition,
@@ -18,10 +20,35 @@ function *createNewCompetition(data) {
 	}
 }
 
+function *createNewTeam(data) {
+	try {
+		yield call(
+			competitionSync.createNewTeam,
+			data.data
+		)
+		yield put(teamActions.createNewTeamSuccess(data))
+	} catch (error) {
+		yield put(teamActions.createNewTeamFailure(error))
+	}
+}
+
+function *createNewAthlete(data) {
+	try {
+		yield call(
+			competitionSync.createNewAthlete,
+			data.data
+		)
+		yield put(athleteActions.createNewAthleteSuccess(data))
+	} catch (error) {
+		yield put(athleteActions.createNewAthleteFailure(error))
+	}
+}
+
 export default function* competitions() {
 	
-	yield takeEvery(actionTypes.CREATE_NEW_COMPETITION,
-		createNewCompetition)
+	yield takeEvery(actionTypes.CREATE_NEW_COMPETITION, createNewCompetition)
+	yield takeEvery(actionTypes.CREATE_NEW_TEAM, createNewTeam)
+	yield takeEvery(actionTypes.CREATE_NEW_ATHLETE, createNewAthlete)
 }
 
 export {
