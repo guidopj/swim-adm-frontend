@@ -10,9 +10,11 @@ const sagaMiddleware = createSagaMiddleware();
 let middlewares = applyMiddleware(sagaMiddleware);
 
 export default function configureStore (initialState) {
-    const store = createStore(rootReducer,initialState, compose(
+	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const store = createStore(rootReducer,initialState, composeEnhancers(
         middlewares,
-      ));
+	  )
+	);
       sagaMiddleware.run(rootSaga);
       return store
 }

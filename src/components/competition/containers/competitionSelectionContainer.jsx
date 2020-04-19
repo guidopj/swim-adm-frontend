@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import competitionActions from 'actions/competitionActions'
 import competitionSelector from 'selectors/competition/competitionSelector'
@@ -6,10 +6,15 @@ import { bindActionCreators } from 'redux'
 import CompetitionSelection from 'components/competition/selection/competitionSelection'
 
 const CompetitionSelectionContainer = props => {
+    const { getExistingCompetitions } = props;
+
+   useEffect(() => {
+        getExistingCompetitions()
+    }, [getExistingCompetitions])
 
     return (
         <CompetitionSelection
-            getExistingCompetitions={props.getExistingCompetitions}
+            competitionNames={props.competitionNames}
         />
     )
 }
@@ -23,6 +28,10 @@ function mapDispatchToProps(dispatch) {
         getExistingCompetitions: competitionActions.getExistingCompetitions,
      }, dispatch)
   }
+
+  CompetitionSelectionContainer.defaultProps = {
+    competitionNames: [],
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(
 	CompetitionSelectionContainer

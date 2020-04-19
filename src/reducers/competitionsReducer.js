@@ -4,10 +4,10 @@ import actionTypes from 'actions/types';
 const competitionsReducer = (state = initialState, action) => {  
     switch(action.type){
         case actionTypes.GET_EXISTING_COMPETITIONS_SUCCESS:
-        return {
-            ...state,
-            competitions: action.payload,      
-        };
+            return {
+                ...state,
+                competitions: action.payload,
+            };
         case actionTypes.CREATE_NEW_COMPETITION_SUCCESS:
             return {
                 ...state,

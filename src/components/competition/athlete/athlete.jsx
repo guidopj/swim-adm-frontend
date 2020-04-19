@@ -78,7 +78,7 @@ import Card from '@material-ui/core/Card';
                                 margin="normal"
                                 id="date_of_birth"
                                 label="Date of Birth"
-                                format="dd/MM/yyyy"
+                                format="yyyy-MM-dd"
                                 value={dateOfBirth}
                                 onChange={setDateOfBirth}
                                 KeyboardButtonProps={{

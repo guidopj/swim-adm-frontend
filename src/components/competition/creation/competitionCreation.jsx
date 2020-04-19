@@ -38,7 +38,7 @@ import {
     const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
     const [selectedPoolMeters, setSelectedPoolMeters] = useState(25);
     const [clubName, setClubName] = useState('');
-    const [startTime, setStartTime] = useState(moment().format('HH:mm:ss'));
+    const [startTime, setStartTime] = useState(moment(new Date(), 'hh:mm A'));
     const [inscriptionStartDate, setInscriptionStartDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [inscriptionEndDate, setInscriptionEndDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [numberOfLanes, setNumberOfLanes] = useState(5);
@@ -47,7 +47,7 @@ import {
 
     const createNewCompetition = ev => {
         ev.preventDefault()
-        /* props.createNewCompetition({
+        props.createNewCompetition({
             competition_name: props.competitionName,
             club_name: clubName,
             competition_start_date: startDate,
@@ -57,7 +57,7 @@ import {
             inscription_start_date: inscriptionStartDate,
             inscription_end_date: inscriptionEndDate,
             number_of_lanes: numberOfLanes
-        }) */
+        })
         props.history.push({
             pathname: '/teams',
           })
@@ -78,7 +78,6 @@ import {
                                 id="club_name"
                                 label="Club Name"
                                 value={clubName}
-                                helperText="Please select the club name"
                                 variant="outlined"
                                 margin="normal"
                                 required
@@ -112,7 +111,7 @@ import {
                                 margin="normal"
                                 id="competition_start_date"
                                 label="Start Date"
-                                format="dd/MM/yyyy"
+                                format="yyyy-MM-dd"
                                 value={startDate}
                                 onChange={setStartDate}
                                 KeyboardButtonProps={{
@@ -139,10 +138,10 @@ import {
                             <KeyboardTimePicker
                                 margin="normal"
                                 id="time-picker"
-                                label="Start Time"
                                 value={startTime}
                                 onChange={setStartTime}
-                                format="HH:mm:ss"
+                                format={'HH:mm:ss'}
+                                helperText="Starting Time"
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
                                 }}

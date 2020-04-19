@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import PoolIcon from '@material-ui/icons/Pool';
 import Typography from '@material-ui/core/Typography';
 import Image from 'material-ui-image'
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Divider from '@material-ui/core/Divider';
 import { withRouter } from 'react-router-dom';
+
+import ListWithSuspense from 'components/helpers/listWithSuspense'
 
 import competitionSelectionStyles from './competitionSelectionStyles'
 
@@ -69,26 +66,12 @@ const CompetitionSelection = props => {
               </Button>
               
             </form>
-              <Divider className={classes.divider} />
-              <List 
-                  component="nav"
-                  aria-label="main mailbox folders"
-                  className={classes.list}
-                  subheader={
-                      <ListSubheader component="div" id="nested-list-subheader">
-                        Existing competitions
-                      </ListSubheader>
-                    }>
-                    <Divider />
-                  <ListItem button className={classes.listItem}>
-                      <ListItemText primary="Inbox" />
-                  </ListItem>
-                  <Divider />
-                  <ListItem button className={classes.listItem}>
-                      <ListItemText primary="Drafts" />
-                  </ListItem>
-                  <Divider />
-              </List>
+              <ListWithSuspense
+                competitionNames={props.competitionNames}
+                listSubHeader="Existing competitions"
+                classList={classes.list}
+                classListItem={classes.listItem}
+              />
         </div>
       </Grid>
     </Grid>
