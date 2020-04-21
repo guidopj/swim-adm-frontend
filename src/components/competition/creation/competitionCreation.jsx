@@ -63,9 +63,9 @@ import MenuIcon from '@material-ui/icons/Menu';
             inscription_end_date: moment(inscriptionEndDate).format('YYYY-MM-DD hh:mm:ss'),
             number_of_lanes: numberOfLanes
         })
-        /* props.history.push({
+        props.history.push({
             pathname: '/teams',
-          }) */
+        })
     }
   
     return (
