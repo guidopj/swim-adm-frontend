@@ -6,7 +6,9 @@ import { bindActionCreators } from 'redux'
 import Home from 'components/competition/home/home'
 import teamActions from 'actions/teamActions'
 
+
 const HomeContainer = props => {
+    console.log("fds")
     return (
         <Home
             createNewTeam={props.createNewTeam}

@@ -12,6 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
     root: {
         flexGrow: 1,
         marginTop:17,
+        margin: "auto",
+        width: "50%",
     },
 
     select: {
@@ -23,6 +25,18 @@ import { makeStyles } from '@material-ui/core/styles';
     },
     actionButtons: {
         justifyContent: "space-between"
+    },
+
+    generalCard: {
+        backgroundColor: 'aliceblue',
+    },
+    
+    genre: {
+        width: "100%",
+    },
+
+    team: {
+        width: "100%",
     }
 
 }))

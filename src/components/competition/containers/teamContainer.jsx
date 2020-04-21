@@ -1,29 +1,37 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 
-import competitionSelector from 'selectors/competition/competitionSelector'
+import teamSelector from 'selectors/team/teamSelector'
 import { bindActionCreators } from 'redux'
-import Home from 'components/competition/home/home'
 import teamActions from 'actions/teamActions'
+import TeamCreation from 'components/competition/team/teamCreation'
 
-const HomeContainer = props => {
+const TeamContainer = props => {
+    const { getTeams } = props;
+
+    useEffect(() => {
+        getTeams()
+    }, [getTeams])
+
     return (
-        <Home
+        <TeamCreation
             createNewTeam={props.createNewTeam}
+            teams={props.teams}
         />
     )
 }
 
 function mapStateToProps(state) {
-    return competitionSelector(state)
+    return teamSelector(state)
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ 
         createNewTeam: teamActions.createNewTeam,
+        getTeams: teamActions.getTeams,
      }, dispatch)
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-	HomeContainer
+	TeamContainer
 )

@@ -27,15 +27,19 @@ import Card from '@material-ui/core/Card';
     const [athleteSurname, setAthleteSurname] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState(moment().format('YYYY-MM-DD'))
     const [genre, setGenre] = useState('');
+    const [athleteTeam, setAthleteTeam] = useState('')
+    const [athleteDni, setAthleteDni] = useState(0)
     
 
     const createNewAthlete = ev => {
         ev.preventDefault()
         props.createNewAthlete({
+            dni: athleteDni,
             name: athleteSurname,
             surname: athleteSurname,
-            date_of_birth: dateOfBirth,
+            date_of_birth: moment(dateOfBirth).format('YYYY-MM-DD'),
             genre,
+            team: athleteTeam
         })
     }
     
@@ -43,7 +47,7 @@ import Card from '@material-ui/core/Card';
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <div className={classes.root}>
-            <Card>
+            <Card className={classes.generalCard}>
                 <CardHeader
                     title={"Create New Athlete"}
                 />
@@ -52,6 +56,18 @@ import Card from '@material-ui/core/Card';
                     <Grid container>
                         <Grid item lg={4} xs={12} md={6}>
                             <TextField
+                                    type="number"
+                                    id="athlete_dni"
+                                    label="Athlete DNI"
+                                    value={athleteDni}
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    autoFocus
+                                    onChange={event => setAthleteDni(event.target.value)}
+                                >
+                                </TextField>
+                            <TextField
                                 id="athlete_name"
                                 label="Athlete Name"
                                 value={athleteName}
@@ -59,7 +75,6 @@ import Card from '@material-ui/core/Card';
                                 variant="outlined"
                                 margin="normal"
                                 required
-                                autoFocus
                                 onChange={event => setAthleteName(event.target.value)}
                             >
                             </TextField>
@@ -85,7 +100,24 @@ import Card from '@material-ui/core/Card';
                                     'aria-label': 'change date',
                                 }}
                             />
+                            <Grid item md={6} xs={12} lg={4}>
                             <TextField
+                                id="athlete_team"
+                                select
+                                label="Team"
+                                value={athleteTeam}
+                                onChange={event => setAthleteTeam(event.target.value)}
+                                className={classes.team}
+                            >
+                                {props.teams.map((team) => (
+                                    <MenuItem key={team.team_name_abbr} value={team.team_name_abbr}>
+                                        {team.team_name_abbr + "-" + team.team_name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </Grid>
+                            <TextField
+                                className={classes.genre}
                                 id="genre"
                                 select
                                 label="genre"

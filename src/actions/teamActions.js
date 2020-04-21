@@ -1,6 +1,23 @@
 import actionTypes from './types'
 
-const competitionActions = {
+const teamActions = {
+      getTeams() {
+		return {
+                  type: actionTypes.GET_TEAMS,
+		}
+      },
+      getTeamsSuccess(data) {
+		return {
+                  type: actionTypes.GET_TEAMS_SUCCESS,
+                  data
+		}
+      },
+      getTeamsFailure(data) {
+		return {
+                  type: actionTypes.GET_TEAMS_FAILURE,
+                  data
+		}
+      },
 	createNewTeam(data) {
 		return {
             type: actionTypes.CREATE_NEW_TEAM,
@@ -21,4 +38,4 @@ const competitionActions = {
 	},
 }
 
-export default competitionActions
+export default teamActions

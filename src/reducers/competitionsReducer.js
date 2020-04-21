@@ -13,6 +13,11 @@ const competitionsReducer = (state = initialState, action) => {
                 ...state,
                 competitions: [...state.competitions, action.payload]
             };
+        case actionTypes.GET_TEAMS_SUCCESS:
+            return {
+                ...state,
+                teams: action.data
+            };
         
         default:
             return state;

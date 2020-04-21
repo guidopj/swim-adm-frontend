@@ -12,8 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
     root: {
         flexGrow: 1,
         marginTop:17,
-        margin: "auto",
-        width: "50%",
+        marginLeft: "10px",
     },
 
     select: {
