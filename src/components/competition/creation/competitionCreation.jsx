@@ -17,6 +17,11 @@ import {
   import _ from 'lodash';
   import moment from 'moment'
   import { withRouter } from 'react-router-dom';
+  import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
   import competitionCreationStyles from './competitionCreationStyles'
 
@@ -34,13 +39,13 @@ import {
         },
       ];
 
-    const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'))
-    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+    const [endDate, setEndDate] = useState(moment())
+    const [startDate, setStartDate] = useState(moment());
     const [selectedPoolMeters, setSelectedPoolMeters] = useState(25);
     const [clubName, setClubName] = useState('');
-    const [startTime, setStartTime] = useState(moment(new Date(), 'hh:mm A'));
-    const [inscriptionStartDate, setInscriptionStartDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
-    const [inscriptionEndDate, setInscriptionEndDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
+    const [startTime, setStartTime] = useState(moment());
+    const [inscriptionStartDate, setInscriptionStartDate] = useState(moment());
+    const [inscriptionEndDate, setInscriptionEndDate] = useState(moment());
     const [numberOfLanes, setNumberOfLanes] = useState(5);
 
     const handlePoolMetersChange = event => setSelectedPoolMeters(event.target.value)
@@ -50,23 +55,34 @@ import {
         props.createNewCompetition({
             competition_name: props.competitionName,
             club_name: clubName,
-            competition_start_date: startDate,
-            competition_end_date: endDate,
+            competition_start_date: moment(startDate).format('YYYY-MM-DD'),
+            competition_end_date: moment(endDate).format('YYYY-MM-DD'),
             pool_meters: selectedPoolMeters,
-            start_time: startTime,
-            inscription_start_date: inscriptionStartDate,
-            inscription_end_date: inscriptionEndDate,
+            start_time: moment(startTime).format("HH:mm:ss"),
+            inscription_start_date: moment(inscriptionStartDate).format('YYYY-MM-DD hh:mm:ss'),
+            inscription_end_date: moment(inscriptionEndDate).format('YYYY-MM-DD hh:mm:ss'),
             number_of_lanes: numberOfLanes
         })
-        props.history.push({
+        /* props.history.push({
             pathname: '/teams',
-          })
+          }) */
     }
   
     return (
+        <div>
+        <AppBar position="static">
+        <Toolbar variant="dense">
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit">
+            SWIM-ADM
+          </Typography>
+        </Toolbar>
+      </AppBar>
+        <div className={classes.root}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <div className={classes.root}>
-            <Card>
+            <Card className={classes.generalCard}>
                 <CardHeader
                     title={"New Competition: " + props.competitionName}
                 />
@@ -111,7 +127,7 @@ import {
                                 margin="normal"
                                 id="competition_start_date"
                                 label="Start Date"
-                                format="yyyy-MM-dd"
+                                format="dd/MM/yyyy"
                                 value={startDate}
                                 onChange={setStartDate}
                                 KeyboardButtonProps={{
@@ -139,8 +155,8 @@ import {
                                 margin="normal"
                                 id="time-picker"
                                 value={startTime}
-                                onChange={setStartTime}
-                                format={'HH:mm:ss'}
+                                onChange={time => setStartTime(moment(time))}
+                                format="HH:mm:ss"
                                 helperText="Starting Time"
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
@@ -221,8 +237,9 @@ import {
                 </Grid>
             </CardActions>
         </Card>
-    </div>
         </MuiPickersUtilsProvider>
+        </div>
+        </div>
     )}
 );
 
