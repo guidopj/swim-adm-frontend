@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 
 import competitionSelector from 'selectors/competition/competitionSelector'
 import { bindActionCreators } from 'redux'
-import Home from 'components/competition/home/home'
+import CompetitionExecution from 'components/competition/execution/execution'
 import teamActions from 'actions/teamActions'
 
 
-const HomeContainer = props => {
+const CompetitionExecutionContainer = props => {
     return (
-        <Home
+        <CompetitionExecution
             createNewTeam={props.createNewTeam}
         />
     )
@@ -26,5 +26,5 @@ function mapDispatchToProps(dispatch) {
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-	HomeContainer
+	CompetitionExecutionContainer
 )

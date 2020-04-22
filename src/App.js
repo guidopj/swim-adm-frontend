@@ -7,6 +7,7 @@ import {
 
 import CompetitionSelectionContainer from 'components/competition/containers/competitionSelectionContainer'
 import CompetitionCreationContainer from 'components/competition/containers/competitionCreationContainer'
+import CompetitionExecutionContainer from 'components/competition/containers/competitionExecutionContainer'
 import HomeContainer from 'components/competition/containers/homeContainer'
 import AthleteContainer from 'components/competition/containers/athleteContainer'
 import TeamContainer from 'components/competition/containers/teamContainer'
@@ -16,27 +17,40 @@ import AppBar from '@material-ui/core/AppBar';
   import Typography from '@material-ui/core/Typography';
   import ButtonGroup from '@material-ui/core/ButtonGroup';
   import Button from '@material-ui/core/Button';
+  import { makeStyles } from '@material-ui/core/styles';
+  import Grid from '@material-ui/core/Grid';
+
+  const classes = makeStyles((theme) => ({
+    
+    buttonGroup: {
+        justifyContent: "space-around",
+    },
+
+}))
+
 
 const HomeTemplate = ({component: Component, ...rest}) => {
   return (
     <Route {...rest} render={matchProps => (
       <React.Fragment>
-        <div className="DefaultLayout">
-          <AppBar position="static">
-                  <Toolbar variant="dense">
-                      <Typography variant="h6" color="inherit">
-                          SWIM-ADM
-                      </Typography>
-                                  
-                      <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-                          <Link to="/teams"><Button>Teams</Button></Link>
-                          <Link to="/athletes"><Button>Athletes</Button></Link>
-                          <Link to="/runCompetition"><Button>Run Competition</Button></Link>
-                      </ButtonGroup>
-                                  
-                  </Toolbar>
-              </AppBar>
-        </div>
+            <AppBar position="static">
+                    <Toolbar variant="dense">
+                      <Grid container direction="row" spacing={2} style={{justifyContent: "space-around"}}>
+                      <Grid item>
+                          <Typography variant="h6" color="inherit">
+                              SWIM-ADM
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+                              <Link to="/teams"><Button>Teams</Button></Link>
+                              <Link to="/athletes"><Button>Athletes</Button></Link>
+                              <Link to="/runCompetition"><Button>Run Competition</Button></Link>
+                          </ButtonGroup>
+                        </Grid>
+                      </Grid>
+                    </Toolbar>
+                </AppBar>
         <Component {...matchProps} />
         <div className="Footer">Footer</div>
       </React.Fragment>
@@ -52,7 +66,7 @@ function App() {
           <Route path="/create" component={CompetitionCreationContainer} exact/>
           <HomeTemplate path="/teams" component={TeamContainer} />
           <HomeTemplate path="/athletes" component={AthleteContainer} />
-          <HomeTemplate path="/runCompetition" component={RunCompetitionContainer} />
+          <HomeTemplate path="/runCompetition" component={CompetitionExecutionContainer} />
         </Switch>
     </div>
   );
