@@ -18,6 +18,14 @@ const competitionsReducer = (state = initialState, action) => {
                 ...state,
                 teams: action.data
             };
+        case actionTypes.GET_COMPETITION_SUCCESS:
+            return {
+                ...state,
+                selectedCompetitionName: action.name, 
+                teams: action.data.teams,
+                events: action.data.events,
+            };
+
         
         default:
             return state;

@@ -41,10 +41,19 @@ async function getTeams() {
         })
 }
 
+async function getTeam(competition_name) {
+    return axios.get(
+        `${baseURL}/competitions/${competition_name}`)
+        .then(response => {
+            return response
+        })
+}
+
 export default {
     createNewCompetition,
     createNewTeam,
     getExistingCompetitions,
     createNewAthlete,
-    getTeams
+    getTeams,
+    getTeam,
 }

@@ -15,6 +15,7 @@ const CompetitionSelectionContainer = props => {
     return (
         <CompetitionSelection
             competitionNames={props.competitionNames}
+            getCompetition={props.getCompetition}
         />
     )
 }
@@ -24,7 +25,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ 
+    return bindActionCreators({
+        getCompetition: competitionActions.getCompetition,
         getExistingCompetitions: competitionActions.getExistingCompetitions,
      }, dispatch)
   }

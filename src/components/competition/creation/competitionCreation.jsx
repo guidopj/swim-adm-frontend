@@ -23,7 +23,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-  import competitionCreationStyles from './competitionCreationStyles'
+import competitionCreationStyles from './competitionCreationStyles'
+import DjangoCSRFToken from 'django-react-csrftoken'
 
  const CompetitionCreation = React.forwardRef((props, ref) => {
     const classes = competitionCreationStyles();
@@ -63,9 +64,9 @@ import MenuIcon from '@material-ui/icons/Menu';
             inscription_end_date: moment(inscriptionEndDate).format('YYYY-MM-DD hh:mm:ss'),
             number_of_lanes: numberOfLanes
         })
-        props.history.push({
+        /* props.history.push({
             pathname: '/teams',
-        })
+        }) */
     }
   
     return (
@@ -80,166 +81,169 @@ import MenuIcon from '@material-ui/icons/Menu';
           </Typography>
         </Toolbar>
       </AppBar>
-        <div className={classes.root}>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Card className={classes.generalCard}>
-                <CardHeader
-                    title={"New Competition: " + props.competitionName}
-                />
-                <CardContent>
-                    
-                    <Grid container>
-                        <Grid item lg={4} xs={12} md={6}>
-                            <TextField
-                                id="club_name"
-                                label="Club Name"
-                                value={clubName}
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                autoFocus
-                                onChange={event => setClubName(event.target.value)}
-                            >
-                            </TextField>
-                        </Grid>
-                        <Grid item xs={12} md={6} lg={4}>
-                            <TextField
-                                id="pool_meters"
-                                select
-                                ref={ref}
-                                label="Select"
-                                name="pool_meters"
-                                value={selectedPoolMeters}
-                                onChange={handlePoolMetersChange}
-                                helperText="Please select the pool meters"
-                            >
-                            {availableMeters.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                                </MenuItem>
-                            ))}
-                            </TextField>
-                        
-                        </Grid>
-                        
-                        <Grid item xs={12} md={6} lg={4}>
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="competition_start_date"
-                                label="Start Date"
-                                format="dd/MM/yyyy"
-                                value={startDate}
-                                onChange={setStartDate}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
-                        </Grid>
+        <form>
+            <DjangoCSRFToken/>
+            <div className={classes.root}>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Card className={classes.generalCard}>
+                        <CardHeader
+                            title={"New Competition: " + props.competitionName}
+                        />
+                        <CardContent>
+                            
+                            <Grid container>
+                                <Grid item lg={4} xs={12} md={6}>
+                                    <TextField
+                                        id="club_name"
+                                        label="Club Name"
+                                        value={clubName}
+                                        variant="outlined"
+                                        margin="normal"
+                                        required
+                                        autoFocus
+                                        onChange={event => setClubName(event.target.value)}
+                                    >
+                                    </TextField>
+                                </Grid>
+                                <Grid item xs={12} md={6} lg={4}>
+                                    <TextField
+                                        id="pool_meters"
+                                        select
+                                        ref={ref}
+                                        label="Select"
+                                        name="pool_meters"
+                                        value={selectedPoolMeters}
+                                        onChange={handlePoolMetersChange}
+                                        helperText="Please select the pool meters"
+                                    >
+                                    {availableMeters.map((option) => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                        </MenuItem>
+                                    ))}
+                                    </TextField>
+                                
+                                </Grid>
+                                
+                                <Grid item xs={12} md={6} lg={4}>
+                                    <KeyboardDatePicker
+                                        margin="normal"
+                                        id="competition_start_date"
+                                        label="Start Date"
+                                        format="dd/MM/yyyy"
+                                        value={startDate}
+                                        onChange={setStartDate}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
+                                        }}
+                                    />
+                                </Grid>
 
-                        <Grid item xs={12} md={6} lg={4}>
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="competition_end_date"
-                                label="End Date"
-                                format="dd/MM/yyyy"
-                                value={endDate}
-                                onChange={setEndDate}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                                />
-                        </Grid>
+                                <Grid item xs={12} md={6} lg={4}>
+                                    <KeyboardDatePicker
+                                        margin="normal"
+                                        id="competition_end_date"
+                                        label="End Date"
+                                        format="dd/MM/yyyy"
+                                        value={endDate}
+                                        onChange={setEndDate}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
+                                        }}
+                                        />
+                                </Grid>
 
-                        <Grid item xs={12} md={6} lg={4}>
-                            <KeyboardTimePicker
-                                margin="normal"
-                                id="time-picker"
-                                value={startTime}
-                                onChange={time => setStartTime(moment(time))}
-                                format="HH:mm:ss"
-                                helperText="Starting Time"
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change time',
-                                }}
-                            />
-                        </Grid>
+                                <Grid item xs={12} md={6} lg={4}>
+                                    <KeyboardTimePicker
+                                        margin="normal"
+                                        id="time-picker"
+                                        value={startTime}
+                                        onChange={time => setStartTime(moment(time))}
+                                        format="HH:mm:ss"
+                                        helperText="Starting Time"
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change time',
+                                        }}
+                                    />
+                                </Grid>
 
-                        <Grid item xs={12} md={6} lg={4}>
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="inscription_start_date"
-                                label="Inscription Start Date"
-                                format="dd/MM/yyyy"
-                                value={inscriptionStartDate}
-                                onChange={setInscriptionStartDate}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
+                                <Grid item xs={12} md={6} lg={4}>
+                                    <KeyboardDatePicker
+                                        margin="normal"
+                                        id="inscription_start_date"
+                                        label="Inscription Start Date"
+                                        format="dd/MM/yyyy"
+                                        value={inscriptionStartDate}
+                                        onChange={setInscriptionStartDate}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item md={6} xs={12} lg={4}>
+                                    <KeyboardDatePicker
+                                        margin="normal"
+                                        id="inscription_End_date"
+                                        label="Inscription End Date"
+                                        format="dd/MM/yyyy"
+                                        value={inscriptionEndDate}
+                                        onChange={setInscriptionEndDate}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item md={6} xs={12} lg={4}>
+                                    <TextField
+                                        id="number_of_lanes"
+                                        select
+                                        label="Number of Lanes"
+                                        value={numberOfLanes}
+                                        onChange={event => setNumberOfLanes(event.target.value)}
+                                        helperText="Please select the pool number of lanes"
+                                    >
+                                        {_.range(5, 11).map((option) => (
+                                            <MenuItem key={option} value={option}>
+                                            {option}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                </Grid>
+                            </Grid>
+                    </CardContent>
+                    <CardActions >
+                        <Grid container justify="flex-start" spacing={4} className={classes.actionButtons}>
+                            <Grid item md={4} xs={12}>
+                                <Button
+                                    onClick={createNewCompetition}
+                                    variant="contained"
+                                >
+                                    Create New Competition
+                                </Button>
+                            </Grid>
+                            <Grid item md={4} xs={12}>
+                                <Button 
+                                    variant="contained"        
+                                >
+                                    Clean All Fields
+                                </Button>
+                            </Grid>
+                            <Grid item xs={12} md={4}>
+                                <Link to='/'>
+                                    <Button 
+                                        variant="contained"        
+                                    >
+                                        Go Back
+                                    </Button>
+                                </Link> 
+                            </Grid>
                         </Grid>
-                        <Grid item md={6} xs={12} lg={4}>
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="inscription_End_date"
-                                label="Inscription End Date"
-                                format="dd/MM/yyyy"
-                                value={inscriptionEndDate}
-                                onChange={setInscriptionEndDate}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
-                        </Grid>
-                        <Grid item md={6} xs={12} lg={4}>
-                            <TextField
-                                id="number_of_lanes"
-                                select
-                                label="Number of Lanes"
-                                value={numberOfLanes}
-                                onChange={event => setNumberOfLanes(event.target.value)}
-                                helperText="Please select the pool number of lanes"
-                            >
-                                {_.range(5, 11).map((option) => (
-                                    <MenuItem key={option} value={option}>
-                                    {option}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        </Grid>
-                    </Grid>
-            </CardContent>
-            <CardActions >
-                <Grid container justify="flex-start" spacing={4} className={classes.actionButtons}>
-                    <Grid item md={4} xs={12}>
-                        <Button
-                            onClick={createNewCompetition}
-                            variant="contained"
-                        >
-                            Create New Competition
-                        </Button>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <Button 
-                            variant="contained"        
-                        >
-                            Clean All Fields
-                        </Button>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Link to='/'>
-                            <Button 
-                                variant="contained"        
-                            >
-                                Go Back
-                            </Button>
-                        </Link> 
-                    </Grid>
-                </Grid>
-            </CardActions>
-        </Card>
-        </MuiPickersUtilsProvider>
-        </div>
-        </div>
+                    </CardActions>
+                </Card>
+                </MuiPickersUtilsProvider>
+            </div>
+        </form>
+    </div>
     )}
 );
 

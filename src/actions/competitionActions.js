@@ -1,6 +1,25 @@
 import actionTypes from './types'
 
 const competitionActions = {
+	getCompetition(competitionName){
+		return {
+			type: actionTypes.GET_COMPETITION,
+			competitionName,
+		}
+	},
+	getCompetitionSuccess(name, data){
+		return {
+			type: actionTypes.GET_COMPETITION_SUCCESS,
+			name,
+			data,
+		}
+	},
+	getCompetitionFailure(error){
+		return {
+			type: actionTypes.GET_COMPETITION_FAILURE,
+			error,
+		}
+	},
 	getExistingCompetitions() {
 		return {
 			type: actionTypes.GET_EXISTING_COMPETITIONS,
@@ -12,7 +31,7 @@ const competitionActions = {
 			payload,
 		}
 	},
-	getExistingCompetitionsFailed(error) {
+	getExistingCompetitionsFailure(error) {
 		return {
 			type: actionTypes.GET_EXISTING_COMPETITIONS_FAILURE,
 			error,

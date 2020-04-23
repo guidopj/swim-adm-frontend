@@ -6,11 +6,12 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 
 const ListWithSuspense = props => {
+
     return (
         <List 
             component="nav"
             aria-label="main mailbox folders"
-            className={props.classList}
+            className={props.classList}            
             subheader={
                 <ListSubheader component="div" id="nested-list-subheader">
                     {props.listSubHeader}
@@ -19,8 +20,8 @@ const ListWithSuspense = props => {
             <Divider />
            {props.competitionNames.map(c => {
                 return(
-                    <React.Fragment>
-                        <ListItem button className={props.classListItem}>
+                    <React.Fragment key={c}>
+                        <ListItem button className={props.classListItem} onClick={() => props.getCompetition(c)}>
                             <ListItemText primary={c} />
                         </ListItem>
                         <Divider />

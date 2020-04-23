@@ -67,6 +67,7 @@ const CompetitionSelection = props => {
               
             </form>
               <ListWithSuspense
+                getCompetition={props.getCompetition}
                 competitionNames={props.competitionNames}
                 listSubHeader="Existing competitions"
                 classList={classes.list}

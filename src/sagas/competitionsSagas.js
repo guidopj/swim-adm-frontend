@@ -66,7 +66,20 @@ function *getTeams() {
 	}
 }
 
+function *getCompetition(action) {
+	try {
+		const result = yield call(
+			competitionSync.getTeam,
+			action.competitionName
+		)
+		yield put(competitionActions.getCompetitionSuccess(action.competitionName,result.data))
+	} catch (error) {
+		yield put(competitionActions.getCompetitionFailure(error))
+	}
+}
+
 export default function* competitions() {
+	yield takeEvery(actionTypes.GET_COMPETITION, getCompetition)
 	yield takeEvery(actionTypes.GET_EXISTING_COMPETITIONS, getExistingCompetitions)
 	yield takeEvery(actionTypes.CREATE_NEW_COMPETITION, createNewCompetition)
 	yield takeEvery(actionTypes.CREATE_NEW_TEAM, createNewTeam)
