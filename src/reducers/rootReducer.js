@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import competitionsReducer from './competitionsReducer'
 
-const rootReducer = combineReducers({
-    competitions: competitionsReducer,
-});
+import { connectRouter } from 'connected-react-router'
 
-export default rootReducer
+const createRootReducer = (history) => combineReducers({
+  router: connectRouter(history),
+  competitions: competitionsReducer,
+})
+export default createRootReducer

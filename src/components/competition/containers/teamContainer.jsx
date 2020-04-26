@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import teamSelector from 'selectors/team/teamSelector'
@@ -7,16 +7,11 @@ import teamActions from 'actions/teamActions'
 import TeamCreation from 'components/competition/team/teamCreation'
 
 const TeamContainer = props => {
-    const { getTeams } = props;
-
-    useEffect(() => {
-        getTeams()
-    }, [getTeams])
-
     return (
         <TeamCreation
             createNewTeam={props.createNewTeam}
             teams={props.teams}
+            competition_name={props.competition_name}
         />
     )
 }

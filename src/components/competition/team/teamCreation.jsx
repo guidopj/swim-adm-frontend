@@ -33,19 +33,20 @@ import TableRow from '@material-ui/core/TableRow';
     const [teamAdress, setTeamAddress] = useState('');
     const [teamCity, setTeamCity] = useState('');
 
-    const createNewCompetition = ev => {
+    const createNewTeam = ev => {
         ev.preventDefault()
         props.createNewTeam({
             team_name: teamName,
             team_name_abbr: teamNameAbbr,
             team_address: teamAdress,
             team_city: teamCity,
+            competition_name: props.competition_name
         })
     }
     
-  
     return (
         <div>
+            {console.log(props.teams)}
             <div className={classes.root}>
                 <Grid container direction="row" spacing={2}> 
                     <Grid item>
@@ -115,7 +116,7 @@ import TableRow from '@material-ui/core/TableRow';
                                     <Grid item md={4} xs={12}>
                                         <Button
                                             variant="contained"
-                                            onClick={createNewCompetition}
+                                            onClick={createNewTeam}
                                         >
                                             Create New Team
                                         </Button>
@@ -151,7 +152,7 @@ import TableRow from '@material-ui/core/TableRow';
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {props.teams && props.teams.map((team) => (
+                            {props.teams && props.teams.map(team => (
                                 <TableRow key={team.team_name_abbr}>
                                     <TableCell component="th" scope="row">
                                         {team.team_name}

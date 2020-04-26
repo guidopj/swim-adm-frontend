@@ -41,7 +41,7 @@ async function getTeams() {
         })
 }
 
-async function getTeam(competition_name) {
+async function getCompetition(competition_name) {
     return axios.get(
         `${baseURL}/competitions/${competition_name}`)
         .then(response => {
@@ -55,5 +55,5 @@ export default {
     getExistingCompetitions,
     createNewAthlete,
     getTeams,
-    getTeam,
+    getCompetition,
 }

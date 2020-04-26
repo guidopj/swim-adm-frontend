@@ -4,8 +4,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
+import { withRouter } from 'react-router-dom';
 
 const ListWithSuspense = props => {
+
+    const getCompetitionDetails = name => {
+        
+        props.getCompetition(name)
+        /* props.history.push({
+            pathname: '/teams',
+    }) */
+    }
 
     return (
         <List 
@@ -21,7 +30,7 @@ const ListWithSuspense = props => {
            {props.competitionNames.map(c => {
                 return(
                     <React.Fragment key={c}>
-                        <ListItem button className={props.classListItem} onClick={() => props.getCompetition(c)}>
+                        <ListItem button className={props.classListItem} onClick={() => getCompetitionDetails(c)}>
                             <ListItemText primary={c} />
                         </ListItem>
                         <Divider />
@@ -33,4 +42,4 @@ const ListWithSuspense = props => {
     );
 }
 
-export default ListWithSuspense
+export default withRouter(ListWithSuspense)

@@ -41,8 +41,8 @@ const HomeTemplate = ({component: Component, ...rest}) => {
                               SWIM-ADM
                           </Typography>
                         </Grid>
-                        <Grid item>
-                          <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
+                        <Grid item md={6}>
+                          <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" fullWidth>
                               <Link to="/teams"><Button>Teams</Button></Link>
                               <Link to="/athletes"><Button>Athletes</Button></Link>
                               <Link to="/runCompetition"><Button>Run Competition</Button></Link>

@@ -21,6 +21,7 @@ function *createNewCompetition(data) {
 }
 
 function *createNewTeam(data) {
+	console.log(data.data)
 	try {
 		yield call(
 			competitionSync.createNewTeam,
@@ -69,7 +70,7 @@ function *getTeams() {
 function *getCompetition(action) {
 	try {
 		const result = yield call(
-			competitionSync.getTeam,
+			competitionSync.getCompetition,
 			action.competitionName
 		)
 		yield put(competitionActions.getCompetitionSuccess(action.competitionName,result.data))

@@ -20,10 +20,11 @@ const CompetitionSelection = props => {
 
   const moveToCreation = ev => {
     ev.preventDefault()
-    props.history.push({
+    props.moveToCreation(competitionName)
+    /* props.history.push({
       pathname: '/create',
       state: { competitionName }
-    })
+    }) */
   }
 
   return (
