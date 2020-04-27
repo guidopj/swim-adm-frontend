@@ -1,24 +1,40 @@
 import actionTypes from './types'
 
-const competitionActions = {
-	createNewAthlete(data) {
+const athleteActions = {
+  getAthletes() {
 		return {
-                  type: actionTypes.CREATE_NEW_ATHLETE,
-                  data
+      type: actionTypes.GET_ATHLETES,
 		}
-    },
-    createNewAthleteSuccess(data) {
+  },
+  getAthletesSuccess(data) {
 		return {
-                  type: actionTypes.CREATE_NEW_ATHLETE_SUCCESS,
-                  data
+      type: actionTypes.GET_ATHLETES_SUCCESS,
+      data
 		}
-    },
-    createNewAthleteFailure(error) {
+  },
+  getAthletesFailure() {
 		return {
-                  type: actionTypes.CREATE_NEW_ATHLETE_FAILURE,
-                  error
+      type: actionTypes.GET_ATHLETES_FAILURE,
+		}
+  },
+  createNewAthlete(data) {
+		return {
+      type: actionTypes.CREATE_NEW_ATHLETE,
+      data
+		}
+  },
+  createNewAthleteSuccess(data) {
+    return {
+      type: actionTypes.CREATE_NEW_ATHLETE_SUCCESS,
+      data
+    }
+  },
+  createNewAthleteFailure(error) {
+		return {
+      type: actionTypes.CREATE_NEW_ATHLETE_FAILURE,
+      error
 		}
 	},
 }
 
-export default competitionActions
+export default athleteActions

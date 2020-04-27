@@ -1,27 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import competitionSelector from 'selectors/competition/competitionSelector'
+import athleteSelector from 'selectors/athlete/athleteSelector'
 import { bindActionCreators } from 'redux'
 import CompetitionExecution from 'components/competition/execution/execution'
-import teamActions from 'actions/teamActions'
+import athleteActions from 'actions/athleteActions'
 
 
 const CompetitionExecutionContainer = props => {
     return (
         <CompetitionExecution
-            createNewTeam={props.createNewTeam}
+            athletes={props.athletes}
         />
     )
 }
 
 function mapStateToProps(state) {
-    return competitionSelector(state)
+    return athleteSelector(state)
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ 
-        createNewTeam: teamActions.createNewTeam,
+    return bindActionCreators({
+        getAthletes: athleteActions.getAthletes
      }, dispatch)
   }
 

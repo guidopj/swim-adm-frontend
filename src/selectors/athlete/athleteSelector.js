@@ -1,13 +1,14 @@
 import { createSelector } from 'reselect'
 
-const teamsData = state => state.competitions.teams
+const competitionData = state => state.competitions
 
 export default createSelector(
-	teamsData,
-	teams => {
+	competitionData,
+	competition => {
 		
 		return {
-			teams: teams
+			athletes: competition.athletes,
+			teams: competition.teams,
 		}
 	}
 )

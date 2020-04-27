@@ -21,7 +21,6 @@ function *createNewCompetition(data) {
 }
 
 function *createNewTeam(data) {
-	console.log(data.data)
 	try {
 		yield call(
 			competitionSync.createNewTeam,
@@ -79,6 +78,17 @@ function *getCompetition(action) {
 	}
 }
 
+function *getAthletes() {
+	try {
+		const result = yield call(
+			competitionSync.getAthletes,
+		)
+		yield put(athleteActions.getAthletesSuccess(result.data))
+	} catch (error) {
+		yield put(athleteActions.getAthletesFailure(error))
+	}
+}
+
 export default function* competitions() {
 	yield takeEvery(actionTypes.GET_COMPETITION, getCompetition)
 	yield takeEvery(actionTypes.GET_EXISTING_COMPETITIONS, getExistingCompetitions)
@@ -86,6 +96,7 @@ export default function* competitions() {
 	yield takeEvery(actionTypes.CREATE_NEW_TEAM, createNewTeam)
 	yield takeEvery(actionTypes.CREATE_NEW_ATHLETE, createNewAthlete)
 	yield takeEvery(actionTypes.GET_TEAMS, getTeams)
+	yield takeEvery(actionTypes.GET_ATHLETES, getAthletes)
 }
 
 export {

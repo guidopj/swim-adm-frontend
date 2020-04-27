@@ -9,11 +9,7 @@ import { withRouter } from 'react-router-dom';
 const ListWithSuspense = props => {
 
     const getCompetitionDetails = name => {
-        
         props.getCompetition(name)
-        /* props.history.push({
-            pathname: '/teams',
-    }) */
     }
 
     return (

@@ -6,7 +6,7 @@ export default createSelector(
 	competitionsData,
 	competitions => {
 		return {
-			teams: competitions.teams && competitions.teams.map(team => team.fields),
+			teams: competitions.teams,
 			competition_name: competitions.selectedCompetitionName
 		}
 	}

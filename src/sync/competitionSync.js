@@ -49,6 +49,14 @@ async function getCompetition(competition_name) {
         })
 }
 
+async function getAthletes() {
+    return axios.get(
+        `${baseURL}/athletes/`)
+        .then(response => {
+            return response
+        })
+}
+
 export default {
     createNewCompetition,
     createNewTeam,
@@ -56,4 +64,5 @@ export default {
     createNewAthlete,
     getTeams,
     getCompetition,
+    getAthletes,
 }

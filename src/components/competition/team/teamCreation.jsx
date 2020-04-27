@@ -46,7 +46,6 @@ import TableRow from '@material-ui/core/TableRow';
     
     return (
         <div>
-            {console.log(props.teams)}
             <div className={classes.root}>
                 <Grid container direction="row" spacing={2}> 
                     <Grid item>

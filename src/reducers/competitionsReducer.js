@@ -31,16 +31,20 @@ const competitionsReducer = (state = initialState, action) => {
                 teams: action.data
             };
         case actionTypes.GET_COMPETITION_SUCCESS:
-            const teamsList = parseTeam(action.data.teams)
-            console.log(teamsList)
+            console.log(action.data)
             return {
                 ...state,
                 selectedCompetitionName: action.name, 
-                teams: teamsList,
-                events: JSON.parse(action.data.events),
+                teams: parseTeam(action.data.teams),
+                events: [],
+                athletes: action.data.athletes,
             };
+        case actionTypes.GET_ATHLETES_SUCCESS:
+            return {
+                ...state,
+                athletes: action.data,
+            }
 
-        
         default:
             return state;
     }
