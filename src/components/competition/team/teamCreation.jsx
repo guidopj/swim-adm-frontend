@@ -4,17 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
-  import CardActions from '@material-ui/core/CardActions';
-  import CardContent from '@material-ui/core/CardContent';
-  import CardHeader from '@material-ui/core/CardHeader';
-  import _ from 'lodash';
-  import AppBar from '@material-ui/core/AppBar';
-  import Toolbar from '@material-ui/core/Toolbar';
-  import Typography from '@material-ui/core/Typography';
-  import IconButton from '@material-ui/core/IconButton';
-  import MenuIcon from '@material-ui/icons/Menu';
-  import Paper from '@material-ui/core/Paper';
-  import Table from '@material-ui/core/Table';
+ import CardActions from '@material-ui/core/CardActions';
+ import CardContent from '@material-ui/core/CardContent';
+ import CardHeader from '@material-ui/core/CardHeader';
+import _ from 'lodash';
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -143,7 +138,7 @@ import TableRow from '@material-ui/core/TableRow';
                     </Grid>
                     <Grid item>
                         <TableContainer component={Paper} >
-                    <Table className={classes.table} aria-label="simple table">
+                    <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>TEAM</TableCell>

@@ -21,6 +21,7 @@ const competitionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 competitions: [...state.competitions, action.payload],
+                selectedCompetitionName: action.payload.competition_name,
                 teams: [],
                 events: [],
 
@@ -31,7 +32,6 @@ const competitionsReducer = (state = initialState, action) => {
                 teams: action.data
             };
         case actionTypes.GET_COMPETITION_SUCCESS:
-            console.log(action.data)
             return {
                 ...state,
                 selectedCompetitionName: action.name, 

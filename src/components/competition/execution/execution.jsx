@@ -1,53 +1,49 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom'
-import Card from '@material-ui/core/Card';
-  import CardActions from '@material-ui/core/CardActions';
-  import CardContent from '@material-ui/core/CardContent';
-  import CardHeader from '@material-ui/core/CardHeader';
-  import _ from 'lodash';
-  import Paper from '@material-ui/core/Paper';
-  import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardTimePicker,
-  } from '@material-ui/pickers';
-  import DateFnsUtils from '@date-io/date-fns';
+import _ from 'lodash'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Moment from 'react-moment';
+import moment from 'moment'
+import Paper from '@material-ui/core/Paper';
+import executionStyles from './executionStyles'
+import TextField from '@material-ui/core/TextField';
 
-
-
-  import executionStyles from './executionStyles'
-
- const CompetitionExecution = props => {
+const CompetitionExecution = props => {
     const classes = executionStyles();
 
-    const [teamName, setTeamName] = useState('');
-    const [teamNameAbbr, setTeamNameAbbr] = useState('');
-    const [teamAdress, setTeamAddress] = useState('');
-    const [teamCity, setTeamCity] = useState('');
+    const [finalTime, setFinalTime] = useState(moment().format("m:ss.SS"));
 
     const createNewCompetition = ev => {
         ev.preventDefault()
         props.createNewTeam({
-            team_name: teamName,
-            team_name_abbr: teamNameAbbr,
-            team_address: teamAdress,
-            team_city: teamCity,
+            
         })
     }
+
+    const handleKeyPress = event => {
+        const time = event.target.value
+        const finalTime = time.length === 5 ? "0" + time : time
+        if(event.key === 'Enter'){
+            const valid = moment(finalTime, 'mmssSS', true);
+            if(valid.isValid()){
+                const finalFormatedTime = valid.format("mm:ss.SS")
+                console.log(finalFormatedTime)
+                setFinalTime(finalFormatedTime)
+            } else {
+                console.log("NOT VALID")
+            }
+        }
+      }
     
   
     return (
         <div>
             <div className={classes.root}>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid container direction="row" spacing={2}> 
                         <Grid item>
                             <TableContainer component={Paper} >
@@ -75,10 +71,20 @@ import {
                                             {"00:00:00"}
                                         </TableCell>
                                         <TableCell align="right">
-                                        <KeyboardTimePicker
-                                            label="Masked timepicker"
-                                            format="mm:ss"
-                                        />
+                                            <Moment 
+                                                element={TextField}
+                                                title={finalTime}
+                                                withTitle
+                                                titleFormat="mm:ss.SS"
+                                                label="Final Time"
+                                                type="number"
+                                                onKeyUp={handleKeyPress}
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                            >
+                                                {finalTime}
+                                            </Moment>
                                         </TableCell>
                                         <TableCell align="right">
                                             1
@@ -93,7 +99,6 @@ import {
                     </TableContainer>
                     </Grid>
                 </Grid>
-            </MuiPickersUtilsProvider>
         </div>
     </div>
     )

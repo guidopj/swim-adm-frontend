@@ -26,7 +26,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import competitionCreationStyles from './competitionCreationStyles'
 import DjangoCSRFToken from 'django-react-csrftoken'
 
- const CompetitionCreation = React.forwardRef((props, ref) => {
+ const CompetitionCreation = props => {
     const classes = competitionCreationStyles();
 
     const availableMeters = [
@@ -64,9 +64,9 @@ import DjangoCSRFToken from 'django-react-csrftoken'
             inscription_end_date: moment(inscriptionEndDate).format('YYYY-MM-DD hh:mm:ss'),
             number_of_lanes: numberOfLanes
         })
-        props.history.push({
+        /* props.history.push({
             pathname: '/teams',
-        })
+        }) */
     }
   
     return (
@@ -109,7 +109,6 @@ import DjangoCSRFToken from 'django-react-csrftoken'
                                     <TextField
                                         id="pool_meters"
                                         select
-                                        ref={ref}
                                         label="Select"
                                         name="pool_meters"
                                         value={selectedPoolMeters}
@@ -244,8 +243,8 @@ import DjangoCSRFToken from 'django-react-csrftoken'
             </div>
         </form>
     </div>
-    )}
-);
+    )
+}
 
 
 export default withRouter(CompetitionCreation)

@@ -35,12 +35,16 @@ import Card from '@material-ui/core/Card';
         ev.preventDefault()
         props.createNewAthlete({
             dni: athleteDni,
-            name: athleteSurname,
+            name: athleteName,
             surname: athleteSurname,
             date_of_birth: moment(dateOfBirth).format('YYYY-MM-DD'),
             genre,
             team: athleteTeam
         })
+    }
+
+    const cleanAllFields = () => {
+        Object.keys(this.state).map(field => eval("set" + this.state[field]("")))
     }
     
   
@@ -132,7 +136,6 @@ import Card from '@material-ui/core/Card';
                                 ))}
                             </TextField>
                         </Grid>
-                        
                     </Grid>
             </CardContent>
             <CardActions >
@@ -147,7 +150,8 @@ import Card from '@material-ui/core/Card';
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <Button 
-                            variant="contained"        
+                            variant="contained"
+                            onClick={cleanAllFields}
                         >
                             Clean All Fields
                         </Button>

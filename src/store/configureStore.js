@@ -3,9 +3,19 @@ import createSagaMiddleware from 'redux-saga';
 import redirectMiddleware from 'middlewares/redirectMiddleware'
 import history from 'history.js'
 import { routerMiddleware } from 'connected-react-router'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import rootSaga from 'sagas';
 import rootReducer from 'reducers/rootReducer';
+
+const persistConfig = {
+	key: 'root',
+	storage,
+  }
+
+  const mainReducer = rootReducer(history)
+  const persistedReducer = persistReducer(persistConfig, mainReducer)
 
 /** Saga Middleware */
 const sagaMiddleware = createSagaMiddleware();
@@ -15,12 +25,14 @@ let middlewares = applyMiddleware(sagaMiddleware, routerMiddleware(history), red
 
 export default function configureStore (initialState) {
 	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    const store = createStore(rootReducer(history),initialState, composeEnhancers(
+    const store = createStore(persistedReducer,initialState, composeEnhancers(
         middlewares,
 	  )
 	);
-      sagaMiddleware.run(rootSaga);
-      return store
+	let persistor = persistStore(store)
+	
+	sagaMiddleware.run(rootSaga);
+    return { store, persistor }
 }
 
 /* export const sagaMiddleware = createSagaMiddleware()
