@@ -1,8 +1,9 @@
-import { takeLatest, takeEvery,call, put } from 'redux-saga/effects';
+import { takeEvery,call, put } from 'redux-saga/effects';
 
 import competitionActions from 'actions/competitionActions'
 import teamActions from 'actions/teamActions'
 import athleteActions from 'actions/athleteActions'
+import eventActions from 'actions/eventActions'
 
 import competitionSync from 'sync/competitionSync'
 import actionTypes from 'actions/types'
@@ -41,6 +42,18 @@ function *createNewAthlete(data) {
 		yield put(athleteActions.createNewAthleteSuccess(data))
 	} catch (error) {
 		yield put(athleteActions.createNewAthleteFailure(error))
+	}
+}
+
+function *createNewEvent(data) {
+	try {
+		yield call(
+			competitionSync.createNewEvent,
+			data.data
+		)
+		yield put(eventActions.createEventSuccess(data.data))
+	} catch (error) {
+		yield put(eventActions.createEventFailure(error))
 	}
 }
 
@@ -97,6 +110,7 @@ export default function* competitions() {
 	yield takeEvery(actionTypes.CREATE_NEW_ATHLETE, createNewAthlete)
 	yield takeEvery(actionTypes.GET_TEAMS, getTeams)
 	yield takeEvery(actionTypes.GET_ATHLETES, getAthletes)
+	yield takeEvery(actionTypes.CREATE_EVENT, createNewEvent)
 }
 
 export {

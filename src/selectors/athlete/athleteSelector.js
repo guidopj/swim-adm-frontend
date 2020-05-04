@@ -9,7 +9,6 @@ export default createSelector(
 		return {
 			athletes: competition.athletes,
 			teams: competition.teams,
-			athletes: competition.athletes
 		}
 	}
 )

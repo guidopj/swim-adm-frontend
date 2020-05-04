@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import _ from 'lodash'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -16,14 +15,7 @@ import TextField from '@material-ui/core/TextField';
 const CompetitionExecution = props => {
     const classes = executionStyles();
 
-    const [finalTime, setFinalTime] = useState(moment().format("m:ss.SS"));
-
-    const createNewCompetition = ev => {
-        ev.preventDefault()
-        props.createNewTeam({
-            
-        })
-    }
+    const [finalTime, setFinalTime] = useState(moment().format("m:ss.SS"))
 
     const handleKeyPress = event => {
         const time = event.target.value

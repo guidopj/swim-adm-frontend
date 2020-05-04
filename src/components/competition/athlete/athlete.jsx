@@ -5,20 +5,16 @@ import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
-  import CardActions from '@material-ui/core/CardActions';
-  import CardContent from '@material-ui/core/CardContent';
-  import CardHeader from '@material-ui/core/CardHeader';
-  import _ from 'lodash';
-  import moment from 'moment'
-  import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-  } from '@material-ui/pickers';
-
-  import MenuItem from '@material-ui/core/MenuItem'
-
-
-  import athleteStyles from './athleteStyles'
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import moment from 'moment'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import MenuItem from '@material-ui/core/MenuItem'
+import athleteStyles from './athleteStyles'
 
  const CompetitionCreation = props => {
     const classes = athleteStyles();
@@ -44,7 +40,12 @@ import Card from '@material-ui/core/Card';
     }
 
     const cleanAllFields = () => {
-        Object.keys(this.state).map(field => eval("set" + this.state[field]("")))
+        setAthleteName('')
+        setAthleteSurname('')
+        setDateOfBirth(moment().format('YYYY-MM-DD'))
+        setGenre('')
+        setAthleteTeam('')
+        setAthleteDni(0)
     }
     
   

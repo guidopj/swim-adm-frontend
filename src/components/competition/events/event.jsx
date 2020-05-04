@@ -9,57 +9,75 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import _ from 'lodash';
 import constants from 'constants.js'
-import athleteStyles from './athleteStyles'
+import eventStyles from './eventStyles'
 import MenuItem from '@material-ui/core/MenuItem'
+import Paper from '@material-ui/core/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 
  const CompetitionCreation = props => {
-    const classes = athleteStyles();
+    const classes = eventStyles();
 
-    const [meters, setMeters] = useState(0);
+    const [meters, setMeters] = useState(25);
     const [style, setStyle] = useState("");
     const [genre, setGenre] = useState("")
+    const [ageFrom, setAgeFrom] = useState(7)
+    const [ageTo, setAgeTo] = useState(8)
     
 
     const createNewEvent = ev => {
-        ev.preventDefault()
-        props.createNewEvent({
+        props.createEvent({
             meters,
             style,
             genre,
+            category_from_age: ageFrom,
+            category_to_age: ageTo,
+            competition_name: props.competitionName,
         })
+    }
+
+    const filterPosibleAges = () => {
+        return _.filter(constants.AGES, age => {return age > ageFrom})
     }
   
     return (
-            <div className={classes.root}>
+            <div>
             <Card className={classes.generalCard}>
                 <CardHeader
                     title={"Create New Event"}
                 />
                 <CardContent>
                     
-                    <Grid container>
+                    <Grid container spacing={2}>
                         <Grid item lg={4} xs={12} md={6}>
                             <TextField
-                                    type="number"
-                                    id="event_meters"
-                                    label="Meters"
-                                    value={meters}
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    autoFocus
-                                    onChange={event => setMeters(event.target.value)}
-                                >
-                                </TextField>
-                            
-                            <Grid item md={6} xs={12} lg={4}>
+                                id="event_style"
+                                select
+                                label="meters"
+                                value={meters}
+                                onChange={event => setMeters(event.target.value)}
+                                className={classes.select}
+                            >
+                                {constants.METERS.map((style) => (
+                                    <MenuItem key={style} value={style}>
+                                        {style}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </Grid>
+                        <Grid item md={6} xs={12} lg={4}>
                             <TextField
                                 id="event_style"
                                 select
                                 label="style"
                                 value={style}
                                 onChange={event => setStyle(event.target.value)}
-                                className={classes.team}
+                                className={classes.select}
                             >
                                 {constants.STYLES.map((style) => (
                                     <MenuItem key={style} value={style}>
@@ -68,16 +86,48 @@ import MenuItem from '@material-ui/core/MenuItem'
                                 ))}
                             </TextField>
                         </Grid>
+                        <Grid item md={6} xs={12} lg={4}>
                             <TextField
-                                className={classes.genre}
+                                className={classes.select}
                                 id="genre"
                                 select
                                 label="genre"
                                 value={genre}
                                 onChange={event => setGenre(event.target.value)}
-                                helperText="Event gerne"
                             >
                                 {constants.GENRE.map((option) => (
+                                    <MenuItem key={option} value={option}>
+                                        {option}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </Grid>
+                        <Grid item md={3} xs={12} lg={4}>
+                            <TextField
+                                className={classes.select}
+                                id="age_from"
+                                select
+                                label="Age From"
+                                value={ageFrom}
+                                onChange={event => setAgeFrom(event.target.value)}
+                            >
+                                {constants.AGES.map((option) => (
+                                    <MenuItem key={option} value={option}>
+                                        {option}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </Grid>
+                        <Grid item md={3} xs={12} lg={4}>
+                            <TextField
+                                className={classes.select}
+                                id="age_to"
+                                select
+                                label="Age To"
+                                value={ageTo}
+                                onChange={event => setAgeTo(event.target.value)}
+                            >
+                                {filterPosibleAges().map((option) => (
                                     <MenuItem key={option} value={option}>
                                         {option}
                                     </MenuItem>
@@ -115,6 +165,48 @@ import MenuItem from '@material-ui/core/MenuItem'
                 </Grid>
             </CardActions>
         </Card>
+        <Grid container className={classes.tableContainer}>
+            <Grid item md={10}>
+                <TableContainer component={Paper} >
+                <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+                    Events
+                </Typography>
+                    <Table aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                {constants.EVENT_TABLE_HEADERS.map(header => (
+                                    <TableCell align="right">{header}</TableCell>
+                                ))}
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {props.events && props.events.map(event => (
+                                <TableRow key={event.id}>
+                                    <TableCell component="th" scope="row">
+                                        {event.id}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {event.meters}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {event.style}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {event.category_from_age}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {event.category_to_age}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {event.genre}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Grid>
+        </Grid>
     </div>
     )
 }

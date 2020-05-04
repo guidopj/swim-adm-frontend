@@ -18,9 +18,10 @@ const eventActions = {
             error
 		}
     },
-    createEvent() {
+    createEvent(data) {
 	    return {
             type: actionTypes.CREATE_EVENT,
+            data
 	    }
     },
     createEventSuccess(data) {

@@ -9,18 +9,15 @@ import CompetitionSelectionContainer from 'components/competition/containers/com
 import CompetitionCreationContainer from 'components/competition/containers/competitionCreationContainer'
 import CompetitionExecutionContainer from 'components/competition/containers/competitionExecutionContainer'
 import EventContainer from 'components/competition/containers/eventContainer'
-import HomeContainer from 'components/competition/containers/homeContainer'
 import AthleteContainer from 'components/competition/containers/athleteContainer'
 import TeamContainer from 'components/competition/containers/teamContainer'
-import Home from 'components/competition/home/home'
 import AppBar from '@material-ui/core/AppBar';
-  import Toolbar from '@material-ui/core/Toolbar';
-  import Typography from '@material-ui/core/Typography';
-  import ButtonGroup from '@material-ui/core/ButtonGroup';
-  import Button from '@material-ui/core/Button';
-  import { makeStyles } from '@material-ui/core/styles';
-  import Grid from '@material-ui/core/Grid';
-  import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
   overrides: {
@@ -39,10 +36,10 @@ const theme = createMuiTheme({
 });
 
 
-const HomeTemplate = ({component: Component, ...rest}) => {
+const HomeTemplate = ({component: Component, ...Rest}) => {
   return (
     <ThemeProvider theme={theme}>
-      <Route {...rest} render={matchProps => (
+      <Route {...Rest} render={InputProps => (
         <React.Fragment>
               <AppBar position="static">
                       <Toolbar variant="dense">
@@ -63,7 +60,7 @@ const HomeTemplate = ({component: Component, ...rest}) => {
                         </Grid>
                       </Toolbar>
                   </AppBar>
-          <Component {...matchProps} />
+          <Component {...InputProps} />
         </React.Fragment>
       )} />
         </ThemeProvider>
@@ -76,10 +73,10 @@ function App() {
 				<Switch>
 					<Route path="/" component={CompetitionSelectionContainer} exact/>
           <Route path="/create" component={CompetitionCreationContainer} exact/>
-          <HomeTemplate path="/teams" component={TeamContainer} />
-          <HomeTemplate path="/events" component={EventContainer} />
-          <HomeTemplate path="/athletes" component={AthleteContainer} />
-          <HomeTemplate path="/runCompetition" component={CompetitionExecutionContainer} />
+          <HomeTemplate path="/teams" component={TeamContainer} exact/>
+          <HomeTemplate path="/events" component={EventContainer} exact/>
+          <HomeTemplate path="/athletes" component={AthleteContainer} exact />
+          <HomeTemplate path="/runCompetition" component={CompetitionExecutionContainer} exact/>
         </Switch>
     </div>
   );

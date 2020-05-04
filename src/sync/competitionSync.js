@@ -57,6 +57,14 @@ async function getAthletes() {
         })
 }
 
+async function createNewEvent(data) {
+    await axios.post(
+        `${baseURL}/events/create`, data
+    ).then(response => {
+        return response
+      })
+}
+
 export default {
     createNewCompetition,
     createNewTeam,
@@ -65,4 +73,5 @@ export default {
     getTeams,
     getCompetition,
     getAthletes,
+    createNewEvent,
 }

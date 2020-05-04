@@ -9,15 +9,14 @@ import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
     KeyboardDatePicker,
-  } from '@material-ui/pickers';
-  import MenuItem from '@material-ui/core/MenuItem'
-  import CardActions from '@material-ui/core/CardActions';
-  import CardContent from '@material-ui/core/CardContent';
-  import CardHeader from '@material-ui/core/CardHeader';
-  import _ from 'lodash';
-  import moment from 'moment'
-  import { withRouter } from 'react-router-dom';
-  import AppBar from '@material-ui/core/AppBar';
+} from '@material-ui/pickers';
+import MenuItem from '@material-ui/core/MenuItem'
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import moment from 'moment'
+import { withRouter } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -25,20 +24,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import competitionCreationStyles from './competitionCreationStyles'
 import DjangoCSRFToken from 'django-react-csrftoken'
+import constants from 'constants.js'
 
  const CompetitionCreation = props => {
     const classes = competitionCreationStyles();
-
-    const availableMeters = [
-        {
-          value: '25',
-          label: '25',
-        },
-        {
-          value: '50',
-          label: '50',
-        },
-      ];
 
     const [endDate, setEndDate] = useState(moment())
     const [startDate, setStartDate] = useState(moment());
@@ -115,9 +104,9 @@ import DjangoCSRFToken from 'django-react-csrftoken'
                                         onChange={handlePoolMetersChange}
                                         helperText="Please select the pool meters"
                                     >
-                                    {availableMeters.map((option) => (
+                                    {constants.AVAILABLE_POOL_METERS.map((option) => (
                                         <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
+                                            {option.label}
                                         </MenuItem>
                                     ))}
                                     </TextField>
@@ -201,7 +190,7 @@ import DjangoCSRFToken from 'django-react-csrftoken'
                                         onChange={event => setNumberOfLanes(event.target.value)}
                                         helperText="Please select the pool number of lanes"
                                     >
-                                        {_.range(5, 11).map((option) => (
+                                        {constants.LANES.map((option) => (
                                             <MenuItem key={option} value={option}>
                                             {option}
                                             </MenuItem>

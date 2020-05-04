@@ -1,11 +1,11 @@
 import actionTypes from 'actions/types';
   import initialState from './initialState';
 
-  const parseTeam = (teams) => {
-    const teamsParsed = JSON.parse(teams)
-    return teamsParsed.map(team => {
-        team.fields["team_name_abbr"] = team.pk
-        return team.fields
+  const parseObj = (obj, pk) => {
+    const objParsed = JSON.parse(obj)
+    return objParsed.map(obj => {
+        obj.fields[pk] = obj.pk
+        return obj.fields
     }
     )
   }
@@ -35,14 +35,19 @@ const competitionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedCompetitionName: action.name, 
-                teams: parseTeam(action.data.teams),
-                events: [],
+                teams: parseObj(action.data.teams, "team_name_abbr"),
+                events: parseObj(action.data.events, "id"),
                 athletes: action.data.athletes,
             };
         case actionTypes.GET_ATHLETES_SUCCESS:
             return {
                 ...state,
                 athletes: action.data,
+            }
+        case actionTypes.CREATE_EVENT_SUCCESS:
+            return {
+                ...state,
+                events: [...state.events, action.data]
             }
 
         default:
