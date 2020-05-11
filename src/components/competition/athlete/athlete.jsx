@@ -15,6 +15,7 @@ import {
 } from '@material-ui/pickers';
 import MenuItem from '@material-ui/core/MenuItem'
 import athleteStyles from './athleteStyles'
+import constants from 'constants.js'
 
  const CompetitionCreation = props => {
     const classes = athleteStyles();
@@ -130,7 +131,7 @@ import athleteStyles from './athleteStyles'
                                 onChange={event => setGenre(event.target.value)}
                                 helperText="Athlete gerne"
                             >
-                                {["MALE", "FEMALE"].map((option) => (
+                                {constants.GENRE.map((option) => (
                                     <MenuItem key={option} value={option}>
                                         {option}
                                     </MenuItem>

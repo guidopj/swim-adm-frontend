@@ -20,7 +20,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
- const CompetitionCreation = props => {
+ const Event = React.forwardRef((props, ref) => {
     const classes = eventStyles();
 
     const [meters, setMeters] = useState(25);
@@ -56,6 +56,7 @@ import Typography from '@material-ui/core/Typography';
                     <Grid container spacing={2}>
                         <Grid item lg={4} xs={12} md={6}>
                             <TextField
+                                ref={ref}
                                 id="event_style"
                                 select
                                 label="meters"
@@ -72,6 +73,7 @@ import Typography from '@material-ui/core/Typography';
                         </Grid>
                         <Grid item md={6} xs={12} lg={4}>
                             <TextField
+                                ref={ref}
                                 id="event_style"
                                 select
                                 label="style"
@@ -88,6 +90,7 @@ import Typography from '@material-ui/core/Typography';
                         </Grid>
                         <Grid item md={6} xs={12} lg={4}>
                             <TextField
+                                ref={ref}
                                 className={classes.select}
                                 id="genre"
                                 select
@@ -104,6 +107,7 @@ import Typography from '@material-ui/core/Typography';
                         </Grid>
                         <Grid item md={3} xs={12} lg={4}>
                             <TextField
+                                ref={ref}
                                 className={classes.select}
                                 id="age_from"
                                 select
@@ -120,6 +124,7 @@ import Typography from '@material-ui/core/Typography';
                         </Grid>
                         <Grid item md={3} xs={12} lg={4}>
                             <TextField
+                                ref={ref}
                                 className={classes.select}
                                 id="age_to"
                                 select
@@ -209,7 +214,7 @@ import Typography from '@material-ui/core/Typography';
         </Grid>
     </div>
     )
-}
+})
 
 
-export default CompetitionCreation
+export default Event

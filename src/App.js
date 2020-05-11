@@ -5,6 +5,7 @@ import {
   Link,
 } from "react-router-dom";
 
+import InscriptionContainer from 'components/competition/containers/inscriptionContainer'
 import CompetitionSelectionContainer from 'components/competition/containers/competitionSelectionContainer'
 import CompetitionCreationContainer from 'components/competition/containers/competitionCreationContainer'
 import CompetitionExecutionContainer from 'components/competition/containers/competitionExecutionContainer'
@@ -54,6 +55,7 @@ const HomeTemplate = ({component: Component, ...Rest}) => {
                               <Link to="/teams"><Button>Teams</Button></Link>
                               <Link to="/athletes"><Button>Athletes</Button></Link>
                               <Link to="/events"><Button>Events</Button></Link>
+                              <Link to="/inscriptions"><Button>Inscriptions</Button></Link>
                               <Link to="/runCompetition"><Button>Run Competition</Button></Link>
                             </ButtonGroup>
                           </Grid>
@@ -76,6 +78,7 @@ function App() {
           <HomeTemplate path="/teams" component={TeamContainer} exact/>
           <HomeTemplate path="/events" component={EventContainer} exact/>
           <HomeTemplate path="/athletes" component={AthleteContainer} exact />
+          <HomeTemplate path="/inscriptions" component={InscriptionContainer} exact />
           <HomeTemplate path="/runCompetition" component={CompetitionExecutionContainer} exact/>
         </Switch>
     </div>

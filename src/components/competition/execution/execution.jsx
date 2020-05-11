@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -11,13 +11,16 @@ import moment from 'moment'
 import Paper from '@material-ui/core/Paper';
 import executionStyles from './executionStyles'
 import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
 
 const CompetitionExecution = props => {
     const classes = executionStyles();
 
-    const [finalTime, setFinalTime] = useState(moment().format("m:ss.SS"))
+    const [finalTime, setFinalTime] = useState("")
+    const [finalTimeViewElements, setFinalTimeViewElements] = useState([TextField, TextField])
 
-    const handleKeyPress = event => {
+    const handleKeyPress = (event, idx) => {
         const time = event.target.value
         const finalTime = time.length === 5 ? "0" + time : time
         if(event.key === 'Enter'){
@@ -30,7 +33,9 @@ const CompetitionExecution = props => {
                 console.log("NOT VALID")
             }
         }
-      }
+    }
+
+
     
   
     return (
@@ -64,16 +69,11 @@ const CompetitionExecution = props => {
                                         </TableCell>
                                         <TableCell align="right">
                                             <Moment 
-                                                element={TextField}
-                                                title={finalTime}
-                                                withTitle
+                                                element={finalTimeViewElements[idx]}
                                                 titleFormat="mm:ss.SS"
                                                 label="Final Time"
                                                 type="number"
-                                                onKeyUp={handleKeyPress}
-                                                InputLabelProps={{
-                                                    shrink: true,
-                                                }}
+                                                onKeyUp={(event) => handleKeyPress(event, idx)}
                                             >
                                                 {finalTime}
                                             </Moment>

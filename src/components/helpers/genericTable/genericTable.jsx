@@ -13,20 +13,20 @@ const GenericTable = props => {
             <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                    {props.tableCells.map(cell =>
-                        <TableCell>{cell}</TableCell>
+                    {props.tableHeaders.map(header =>
+                        <TableCell>{header}</TableCell>
                     )}
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.object && props.object.athletes.map(obj => (
-                        <TableRow key={props.object.pk}>
-                            {Object.keys(props.object.athletes).map(field => (
-                                    <TableCell component="th" scope="row">
-                                        {props.object.athletes[field]}
-                                    </TableCell>
-                            ))}
-                        </TableRow>
+                    {props.valuesList.map(current => (
+                    <TableRow key={current[props.key]}>
+                        {Object.keys(props.elements(current)).map(field => (
+                            <TableCell component="th" scope="row">
+                                {props.elements(current)[field]}
+                            </TableCell>
+                        ))}
+                    </TableRow>
                     ))}
                 </TableBody>
                     

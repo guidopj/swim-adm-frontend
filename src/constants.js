@@ -7,6 +7,7 @@ const constants = {
     AGES: _.range(7, 80),
     AVAILABLE_POOL_METERS: [25,50],
     EVENT_TABLE_HEADERS: ["NRO", "METERS", "STYLE", "MINIMUM AGE", "MAXIMUM AGE", "GENRE"],
+    INSCRIPTION_TABLE_HEADERS: ["INSCRIBE", "DNI", "NAME", "SURNAME"],
 }
 
 export default constants
