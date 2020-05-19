@@ -19,7 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
         marginTop:17,
         margin: "auto",
         width: "50%",
-        marginBottom: 20,
+        marginBottom: 30,
     },
 
     tableContainer: {

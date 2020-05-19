@@ -33,25 +33,26 @@ function *createNewTeam(data) {
 	}
 }
 
-function *createNewAthlete(data) {
+function *createNewAthlete(payload) {
 	try {
+		const athleteData = payload.data
 		yield call(
 			competitionSync.createNewAthlete,
-			data.data
+			athleteData
 		)
-		yield put(athleteActions.createNewAthleteSuccess(data))
+		yield put(athleteActions.createNewAthleteSuccess(athleteData))
 	} catch (error) {
 		yield put(athleteActions.createNewAthleteFailure(error))
 	}
 }
 
-function *createNewEvent(data) {
+function *createNewEvent(action) {
 	try {
 		yield call(
 			competitionSync.createNewEvent,
-			data.data
+			action.data
 		)
-		yield put(eventActions.createEventSuccess(data.data))
+		yield put(eventActions.createEventSuccess(action.data))
 	} catch (error) {
 		yield put(eventActions.createEventFailure(error))
 	}
@@ -102,6 +103,18 @@ function *getAthletes() {
 	}
 }
 
+function *createNewInscriptions(action){
+	try {
+		const result = yield call(
+			competitionSync.createNewInscriptions,
+			action.data,
+		)
+		yield put(athleteActions.getAthletesSuccess(result.data))
+	} catch (error) {
+		yield put(athleteActions.getAthletesFailure(error))
+	}
+}
+
 export default function* competitions() {
 	yield takeEvery(actionTypes.GET_COMPETITION, getCompetition)
 	yield takeEvery(actionTypes.GET_EXISTING_COMPETITIONS, getExistingCompetitions)
@@ -111,6 +124,7 @@ export default function* competitions() {
 	yield takeEvery(actionTypes.GET_TEAMS, getTeams)
 	yield takeEvery(actionTypes.GET_ATHLETES, getAthletes)
 	yield takeEvery(actionTypes.CREATE_EVENT, createNewEvent)
+	yield takeEvery(actionTypes.CREATE_NEW_INSCRIPTIONS, createNewInscriptions)
 }
 
 export {

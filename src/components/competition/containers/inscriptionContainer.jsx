@@ -16,6 +16,10 @@ const InscriptionContainer = props => {
             teams={props.teams}
             athletes={props.athletes}
             events={props.events}
+            addInscription={props.addInscription}
+            deleteInscription={props.deleteInscription}
+            inscriptions={props.inscriptions}
+            competitionName={props.competition_name}
         />
     )
 }
@@ -26,7 +30,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ 
-        createNewInscriptions: inscriptionActions.createNewInscriptions,
+        addInscription: inscriptionActions.addInscription,
+        deleteInscription: inscriptionActions.deleteInscription,
      }, dispatch)
   }
 

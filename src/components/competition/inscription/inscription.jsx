@@ -15,26 +15,27 @@ import Radio from '@material-ui/core/Radio';
 import GenericTable from 'components/helpers/genericTable/genericTable'
 import moment from 'moment'
 
- const CompetitionCreation = props => {
+ const Inscription = props => {
     const classes = inscriptionStyles();
 
     const [athletesFiltered, setAthletesFiltered] = useState([]);
     const [eventsFiltered, setEventsFiltered] = useState([]);
     const [team, setTeam] = useState("");
-    const [inscriptions, setInscriptions] = useState([])
-    const [checked, setChecked] = useState(false)
     const [selectedAthlete, setSelectedAthlete] = useState({});
     
 
-    const createNewInscriptions = ev => {
-
+    const createNewInscriptions = () => {
+        props.createNewInscriptions({
+            inscriptions: props.inscriptions,
+            competition_name: props.competitionName,
+        })
     }
 
+    const athleteAge = athlete => moment().diff(moment(athlete.date_of_birth), 'years')
+
     const ageBetween = (athlete, minAge, maxAge) => {
-        console.log(athlete.date_of_birth)
-        const athleteAge = moment(athlete.date_of_birth).diff(moment(), 'years')
-        console.log(athleteAge)
-        return athleteAge >= minAge && athleteAge <= maxAge
+        const age = athleteAge(athlete)
+        return age >= minAge && age <= maxAge
     }
 
     const getAthletesFrom = team => {        
@@ -42,7 +43,7 @@ import moment from 'moment'
     }
 
     const getEventsFor = athlete => {
-        return props.events.filter(event => event.genre === athlete.genre && ageBetween(athlete, event.ageFrom, event.ageTo ))
+        return props.events.filter(event => event.genre === athlete.genre && ageBetween(athlete, event.category_from_age, event.category_to_age ))
     }
 
     const updateInscriptionTable = team => {
@@ -56,13 +57,11 @@ import moment from 'moment'
         setEventsFiltered(getEventsFor(athleteFromDni))
     }
 
-    const handleInscriptionChange = (ev, athlete) =>{
-        setChecked(ev.target.checked)
+    const handleInscriptionChange = (ev, inscription) => {
         if(ev.target.checked) {
-            setInscriptions([...inscriptions, athlete])
+            props.addInscription(inscription)
         } else {
-            const filteredInscriptions = inscriptions.filter(inscription => inscription.dni !== athlete.dni)
-            setInscriptions(filteredInscriptions)
+            props.deleteInscription(inscription)
         }
       }
   
@@ -70,7 +69,7 @@ import moment from 'moment'
         <div className={classes.root}>
             <Card className={classes.generalCard}>
                 <CardHeader
-                    title={"Inscriptions"}
+                    title="Inscriptions"
                 />
                 <CardContent>
                     
@@ -95,8 +94,10 @@ import moment from 'moment'
             </CardContent>
         </Card>
         <Grid container className={classes.tableContainer} spacing={2}>
-            <Grid item md={4}>
+            <Grid item md={10} lg={6}>
                 <GenericTable 
+                    tableTitle="Athletes"
+                    defaultInitialValue="No team selected"
                     tableHeaders={constants.INSCRIPTION_TABLE_HEADERS}
                     key="dni"
                     valuesList= {athletesFiltered}
@@ -112,25 +113,31 @@ import moment from 'moment'
                             column2: athlete.dni,
                             column3: athlete.name,
                             column4: athlete.surname,
+                            column5: athleteAge(athlete),
                         })
                     }                        
                 />
             </Grid>
-            <Grid item md={6}>
-                <GenericTable 
-                    tableHeaders={constants.EVENT_TABLE_HEADERS}
-                    key="nro"
+            <Grid item md={10} lg={6}>
+                <GenericTable
+                    tableTitle="Events"
+                    defaultInitialValue="No athlete selected"
+                    tableHeaders={constants.EVENT_INSCRIPTION_TABLE_HEADERS}
+                    key="id"
                     valuesList= {eventsFiltered}
                     elements= {
-                        athlete => ({
+                        event => ({
                             column1: <Checkbox
-                                        checked={checked}
+                                        checked={_.find(props.inscriptions, inscription =>  _.isMatch(inscription, {athleteDni: selectedAthlete.dni, eventNro: event.id}))}
                                         color="primary"
-                                        onChange={ev => handleInscriptionChange(ev, athlete)} 
+                                        onChange={ev => handleInscriptionChange(ev, {athleteDni: selectedAthlete.dni, eventNro: event.id})} 
                                     />,
-                            column2: athlete.dni,
-                            column3: athlete.name,
-                            column4: athlete.surname,
+                            column2: event.id,
+                            column3: event.meters,
+                            column4: event.style,
+                            column5: event.category_from_age,
+                            column6: event.category_to_age,
+                            column7: event.genre,
                         })
                     }                        
                 />
@@ -174,4 +181,4 @@ import moment from 'moment'
 }
 
 
-export default CompetitionCreation
+export default Inscription

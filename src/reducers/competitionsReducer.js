@@ -24,6 +24,7 @@ const competitionsReducer = (state = initialState, action) => {
                 selectedCompetitionName: action.payload.competition_name,
                 teams: [],
                 events: [],
+                inscriptions: [],
 
             };
         case actionTypes.GET_TEAMS_SUCCESS:
@@ -35,19 +36,35 @@ const competitionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedCompetitionName: action.name, 
-                teams: parseObj(action.data.teams, "team_name_abbr"),
-                events: parseObj(action.data.events, "id"),
+                teams: action.data.teams,
+                events: action.data.events,
                 athletes: action.data.athletes,
+                inscriptions: action.data.inscriptions,
             };
         case actionTypes.GET_ATHLETES_SUCCESS:
             return {
                 ...state,
                 athletes: action.data,
             }
+        case actionTypes.CREATE_NEW_ATHLETE_SUCCESS:
+            return {
+                ...state,
+                athletes: [...state.athletes, action.data]
+            }
         case actionTypes.CREATE_EVENT_SUCCESS:
             return {
                 ...state,
                 events: [...state.events, action.data]
+            }
+        case actionTypes.ADD_INSCRIPTION:
+            return {
+                ...state,
+                inscriptions: [...state.inscriptions, action.inscription]
+            }
+        case actionTypes.DELETE_INSCRIPTION:
+            return {
+                ...state,
+                inscriptions: state.inscriptions.filter(inscription => inscription.athleteDni && inscription.athleteDni !== action.inscription.athleteDni && inscription.eventNro !== action.inscription.eventNro)
             }
 
         default:

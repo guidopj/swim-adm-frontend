@@ -52,11 +52,11 @@ const HomeTemplate = ({component: Component, ...Rest}) => {
                           </Grid>
                           <Grid item md={6} style= {{margin: "auto"}}>
                             <ButtonGroup size="large" variant="outlined" color="primary" aria-label="large contained button group">
-                              <Link to="/teams"><Button>Teams</Button></Link>
-                              <Link to="/athletes"><Button>Athletes</Button></Link>
-                              <Link to="/events"><Button>Events</Button></Link>
-                              <Link to="/inscriptions"><Button>Inscriptions</Button></Link>
-                              <Link to="/runCompetition"><Button>Run Competition</Button></Link>
+                              <Link disablefocusripple="true" fullwidth="true" to="/teams"><Button>Teams</Button></Link>
+                              <Link disablefocusripple="true" fullwidth="true" to="/athletes"><Button>Athletes</Button></Link>
+                              <Link disablefocusripple="true" fullwidth="true" to="/events"><Button>Events</Button></Link>
+                              <Link disablefocusripple="true" fullwidth="true" to="/inscriptions"><Button>Inscriptions</Button></Link>
+                              <Link disablefocusripple="true" fullwidth="true" to="/runCompetition"><Button>Run Competition</Button></Link>
                             </ButtonGroup>
                           </Grid>
                         </Grid>
