@@ -1,14 +1,5 @@
 import actionTypes from 'actions/types';
-  import initialState from './initialState';
-
-  const parseObj = (obj, pk) => {
-    const objParsed = JSON.parse(obj)
-    return objParsed.map(obj => {
-        obj.fields[pk] = obj.pk
-        return obj.fields
-    }
-    )
-  }
+import initialState from './initialState';
   
 const competitionsReducer = (state = initialState, action) => {  
     switch(action.type){

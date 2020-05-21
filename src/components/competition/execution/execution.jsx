@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -11,24 +11,31 @@ import moment from 'moment'
 import Paper from '@material-ui/core/Paper';
 import executionStyles from './executionStyles'
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
+import Label from '@material-ui/core/InputLabel';
 
 const CompetitionExecution = props => {
     const classes = executionStyles();
 
-    const [finalTime, setFinalTime] = useState("")
-    const [finalTimeViewElements, setFinalTimeViewElements] = useState([TextField, TextField])
+    const [finalTimes, setFinalTimes] = useState([])
+    const [finalTimeViewElements, setFinalTimeViewElements] = useState([TextField, TextField, TextField, TextField, TextField])
+    const [lastTimeModified, setLastTimeModified] = useState(0)
+
+    useLayoutEffect(() => {
+        if (finalTimes.length) {
+            console.log(finalTimes)
+            setFinalTimeViewElements(Object.assign([...finalTimeViewElements], {[lastTimeModified]: Label}))
+        }
+    }, [finalTimes])
 
     const handleKeyPress = (event, idx) => {
         const time = event.target.value
         const finalTime = time.length === 5 ? "0" + time : time
         if(event.key === 'Enter'){
-            const valid = moment(finalTime, 'mmssSS', true);
+            const valid = moment(finalTime, ['mmssSS', 'ssSS'], true);
             if(valid.isValid()){
                 const finalFormatedTime = valid.format("mm:ss.SS")
-                console.log(finalFormatedTime)
-                setFinalTime(finalFormatedTime)
+                setLastTimeModified(idx)
+                setFinalTimes(Object.assign([...finalTimes], {[idx]: finalFormatedTime}))
             } else {
                 console.log("NOT VALID")
             }
@@ -70,12 +77,13 @@ const CompetitionExecution = props => {
                                         <TableCell align="right">
                                             <Moment 
                                                 element={finalTimeViewElements[idx]}
-                                                titleFormat="mm:ss.SS"
+                                                format="mm:ss.SS"
+                                                parse="mm:ss.SS"
                                                 label="Final Time"
                                                 type="number"
                                                 onKeyUp={(event) => handleKeyPress(event, idx)}
                                             >
-                                                {finalTime}
+                                                {finalTimes[idx]}
                                             </Moment>
                                         </TableCell>
                                         <TableCell align="right">

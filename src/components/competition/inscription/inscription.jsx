@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import _ from 'lodash';
 import constants from 'constants.js'
 import inscriptionStyles from './inscriptionStyles'
 import MenuItem from '@material-ui/core/MenuItem'
