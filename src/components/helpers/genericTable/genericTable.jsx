@@ -23,7 +23,7 @@ const GenericTable = props => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {(props.valuesList.length && props.valuesList.map(current => (
+                    {props.valuesList.map(current => (
                     <TableRow key={current[props.key]}>
                         {Object.keys(props.elements(current)).map(field => (
                             <TableCell component="th" scope="row">
@@ -31,10 +31,10 @@ const GenericTable = props => {
                             </TableCell>
                         ))}
                     </TableRow>
-                    ))) || props.defaultInitialValue}
+                    ))}
                 </TableBody>
-                    
             </Table>
+            {!props.valuesList.length && props.defaultInitialValue}
         </TableContainer>
     )
 }

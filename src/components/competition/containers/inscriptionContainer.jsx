@@ -32,6 +32,7 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ 
         addInscription: inscriptionActions.addInscription,
         deleteInscription: inscriptionActions.deleteInscription,
+        createNewInscriptions: inscriptionActions.createNewInscriptions,
      }, dispatch)
   }
 

@@ -128,7 +128,7 @@ import moment from 'moment'
                     elements= {
                         event => ({
                             column1: <Checkbox
-                                        checked={_.find(props.inscriptions, inscription =>  _.isMatch(inscription, {athleteDni: selectedAthlete.dni, eventNro: event.id}))}
+                                        checked={props.inscriptions.some(inscription => inscription.athleteDni === selectedAthlete.dni && inscription.eventNro === event.id)}
                                         color="primary"
                                         onChange={ev => handleInscriptionChange(ev, {athleteDni: selectedAthlete.dni, eventNro: event.id})} 
                                     />,

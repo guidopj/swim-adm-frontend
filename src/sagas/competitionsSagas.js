@@ -4,6 +4,7 @@ import competitionActions from 'actions/competitionActions'
 import teamActions from 'actions/teamActions'
 import athleteActions from 'actions/athleteActions'
 import eventActions from 'actions/eventActions'
+import inscriptionActions from 'actions/inscriptionActions'
 
 import competitionSync from 'sync/competitionSync'
 import actionTypes from 'actions/types'
@@ -105,13 +106,13 @@ function *getAthletes() {
 
 function *createNewInscriptions(action){
 	try {
-		const result = yield call(
+		yield call(
 			competitionSync.createNewInscriptions,
 			action.data,
 		)
-		yield put(athleteActions.getAthletesSuccess(result.data))
+		yield put(inscriptionActions.createInscriptionsSuccess())
 	} catch (error) {
-		yield put(athleteActions.getAthletesFailure(error))
+		yield put(inscriptionActions.createInscriptionsFailure(error))
 	}
 }
 

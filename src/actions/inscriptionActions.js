@@ -19,6 +19,17 @@ const inscriptionActions = {
             inscription
 	    }
     },
+    createInscriptionsSuccess() {
+        return {
+            type: actionTypes.CREATE_NEW_INSCRIPTIONS_SUCCESS,
+	    }
+    },
+    createInscriptionsFailure(error){
+        return {
+            type: actionTypes.CREATE_NEW_INSCRIPTIONS_FAILURE,
+            error
+	    }
+    }
 }
 
 export default inscriptionActions

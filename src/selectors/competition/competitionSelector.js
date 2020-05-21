@@ -4,8 +4,7 @@ const competitionsData = state => state.competitions.competitions
 
 export default createSelector(
 	competitionsData,
-	competitions => {
-		
+	competitions => {	
 		return {
 			competitionNames: competitions.map(c => c.competition_name)
 		}
