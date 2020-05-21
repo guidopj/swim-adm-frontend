@@ -33,7 +33,7 @@ import constants from 'constants.js'
     const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
     const [selectedPoolMeters, setSelectedPoolMeters] = useState(25);
     const [clubName, setClubName] = useState('');
-    const [startTime, setStartTime] = useState(moment().format("HH:mm:ss"));
+    const [startTime, setStartTime] = useState(moment().format('HH:mm:ss'));
     const [inscriptionStartDate, setInscriptionStartDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [inscriptionEndDate, setInscriptionEndDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [numberOfLanes, setNumberOfLanes] = useState(5);

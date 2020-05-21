@@ -223,7 +223,7 @@ exports[`Athlete Container renders correctly 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value="2020-05-19"
+                value="2020-05-20"
               />
               <div
                 className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
