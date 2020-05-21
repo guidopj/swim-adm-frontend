@@ -13,12 +13,12 @@ describe ('Competition Creation Container', () => {
   it('renders correctly', () => {
 
     const location = {
-        location: {
-            state: {
-                competitionName: 'a',
-            }
-        }
+      state: {
+        competitionName: 'a',
+      }
     }
+
+    jest.mock('moment', () => () => ({format: () => '2020–01–30T12:34:56+00:00'}));
 
     const tree = renderer
       .create(

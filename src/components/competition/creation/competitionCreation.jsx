@@ -29,13 +29,13 @@ import constants from 'constants.js'
  const CompetitionCreation = props => {
     const classes = competitionCreationStyles();
 
-    const [endDate, setEndDate] = useState(moment())
-    const [startDate, setStartDate] = useState(moment());
+    const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'))
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
     const [selectedPoolMeters, setSelectedPoolMeters] = useState(25);
     const [clubName, setClubName] = useState('');
-    const [startTime, setStartTime] = useState(moment());
-    const [inscriptionStartDate, setInscriptionStartDate] = useState(moment());
-    const [inscriptionEndDate, setInscriptionEndDate] = useState(moment());
+    const [startTime, setStartTime] = useState(moment().format("HH:mm:ss"));
+    const [inscriptionStartDate, setInscriptionStartDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
+    const [inscriptionEndDate, setInscriptionEndDate] = useState(moment().format('YYYY-MM-DD hh:mm:ss'));
     const [numberOfLanes, setNumberOfLanes] = useState(5);
 
     const handlePoolMetersChange = event => setSelectedPoolMeters(event.target.value)
@@ -53,9 +53,6 @@ import constants from 'constants.js'
             inscription_end_date: moment(inscriptionEndDate).format('YYYY-MM-DD hh:mm:ss'),
             number_of_lanes: numberOfLanes
         })
-        /* props.history.push({
-            pathname: '/teams',
-        }) */
     }
   
     return (
@@ -105,8 +102,8 @@ import constants from 'constants.js'
                                         helperText="Please select the pool meters"
                                     >
                                     {constants.AVAILABLE_POOL_METERS.map((option) => (
-                                        <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
+                                        <MenuItem key={option} value={option}>
+                                            {option}
                                         </MenuItem>
                                     ))}
                                     </TextField>
