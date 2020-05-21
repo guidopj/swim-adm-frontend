@@ -18,7 +18,7 @@ describe ('Competition Creation Container', () => {
       }
     }
 
-    jest.mock('moment', () => () => ({format: () => '2020–01–30T12:34:56+00:00'}));
+    jest.mock('moment', () => () => ({format: () => '2020–01–20'}));
 
     const tree = renderer
       .create(
