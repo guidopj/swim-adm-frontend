@@ -1,10 +1,14 @@
 import React from 'react';
 import CompetitionCreationContainer from 'components/competition/containers/competitionCreationContainer';
-import renderer from 'react-test-renderer';
 import configureStore from 'store/configureStore'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import history from 'history.js'
+import Enzyme, { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe ('Competition Creation Container', () => {
   const CreateNewCompetition = jest.fn()
@@ -18,10 +22,8 @@ describe ('Competition Creation Container', () => {
       }
     }
 
-    jest.mock('moment', () => () => ({format: () => '2020–01–20'}));
-
-    const tree = renderer
-      .create(
+    const tree = shallow
+      (
         <Provider store={store}>
           <ConnectedRouter history={history}>
             <CompetitionCreationContainer 
@@ -33,7 +35,6 @@ describe ('Competition Creation Container', () => {
           </ConnectedRouter>
         </Provider>
     )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+    expect(toJson(tree)).toMatchSnapshot();
   })
 })

@@ -34,7 +34,7 @@ import constants from 'constants.js'
             dni: athleteDni,
             name: athleteName,
             surname: athleteSurname,
-            date_of_birth: moment(dateOfBirth).format('YYYY-MM-DD'),
+            date_of_birth: moment(dateOfBirth).format('yyyy-MM-DD'),
             genre,
             team: athleteTeam
         })
@@ -43,7 +43,7 @@ import constants from 'constants.js'
     const cleanAllFields = () => {
         setAthleteName('')
         setAthleteSurname('')
-        setDateOfBirth(moment().format('YYYY-MM-DD'))
+        setDateOfBirth('')
         setGenre('')
         setAthleteTeam('')
         setAthleteDni(0)
@@ -55,7 +55,7 @@ import constants from 'constants.js'
             <div className={classes.root}>
             <Card className={classes.generalCard}>
                 <CardHeader
-                    title={"Create New Athlete"}
+                    title="Create New Athlete"
                 />
                 <CardContent>
                     

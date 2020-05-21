@@ -49,8 +49,8 @@ import constants from 'constants.js'
             competition_end_date: moment(endDate).format('YYYY-MM-DD'),
             pool_meters: selectedPoolMeters,
             start_time: moment(startTime).format("HH:mm:ss"),
-            inscription_start_date: moment(inscriptionStartDate).format('YYYY-MM-DD hh:mm:ss'),
-            inscription_end_date: moment(inscriptionEndDate).format('YYYY-MM-DD hh:mm:ss'),
+            inscription_start_date: moment(inscriptionStartDate).format('YYYY-MM-DD HH:mm:ss'),
+            inscription_end_date: moment(inscriptionEndDate).format('YYYY-MM-DD HH:mm:ss'),
             number_of_lanes: numberOfLanes
         })
     }
@@ -115,7 +115,7 @@ import constants from 'constants.js'
                                         margin="normal"
                                         id="competition_start_date"
                                         label="Start Date"
-                                        format="dd/MM/yyyy"
+                                        format="yyyy-MM-dd"
                                         value={startDate}
                                         onChange={setStartDate}
                                         KeyboardButtonProps={{
@@ -129,7 +129,7 @@ import constants from 'constants.js'
                                         margin="normal"
                                         id="competition_end_date"
                                         label="End Date"
-                                        format="dd/MM/yyyy"
+                                        format="yyyy-MM-dd"
                                         value={endDate}
                                         onChange={setEndDate}
                                         KeyboardButtonProps={{
@@ -157,7 +157,7 @@ import constants from 'constants.js'
                                         margin="normal"
                                         id="inscription_start_date"
                                         label="Inscription Start Date"
-                                        format="dd/MM/yyyy"
+                                        format="yyyy-MM-dd HH:mm:ss"
                                         value={inscriptionStartDate}
                                         onChange={setInscriptionStartDate}
                                         KeyboardButtonProps={{
@@ -170,7 +170,7 @@ import constants from 'constants.js'
                                         margin="normal"
                                         id="inscription_End_date"
                                         label="Inscription End Date"
-                                        format="dd/MM/yyyy"
+                                        format="yyyy-MM-dd HH:mm:ss"
                                         value={inscriptionEndDate}
                                         onChange={setInscriptionEndDate}
                                         KeyboardButtonProps={{

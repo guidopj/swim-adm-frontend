@@ -1,10 +1,14 @@
 import React from 'react';
 import AthleteContainer from 'components/competition/containers/athleteContainer';
-import renderer from 'react-test-renderer';
 import configureStore from 'store/configureStore'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import history from 'history.js'
+import Enzyme, { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import Adapter from 'enzyme-adapter-react-16';
+ 
+Enzyme.configure({ adapter: new Adapter() });
 
 describe ('Athlete Container', () => {
   const createNewAthlete = jest.fn()
@@ -21,11 +25,9 @@ describe ('Athlete Container', () => {
     }
   })
 
-  jest.mock('moment', () => () => ({format: () => '2020–01–20'}));
-
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
+    const tree =
+      shallow(
         <Provider store={store}>
           <ConnectedRouter history={history}>
             <AthleteContainer 
@@ -36,7 +38,6 @@ describe ('Athlete Container', () => {
           </ConnectedRouter>
         </Provider>
     )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+    expect(toJson(tree)).toMatchSnapshot();
   })
 })
