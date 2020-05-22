@@ -127,9 +127,9 @@ import moment from 'moment'
                     elements= {
                         event => ({
                             column1: <Checkbox
-                                        checked={props.inscriptions.some(inscription => inscription.athleteDni === selectedAthlete.dni && inscription.eventNro === event.id)}
+                                        checked={props.inscriptions.some(inscription => inscription.athlete === selectedAthlete.dni && inscription.event === event.id)}
                                         color="primary"
-                                        onChange={ev => handleInscriptionChange(ev, {athleteDni: selectedAthlete.dni, eventNro: event.id})} 
+                                        onChange={ev => handleInscriptionChange(ev, {athlete: selectedAthlete.dni, event: event.id})} 
                                     />,
                             column2: event.id,
                             column3: event.meters,

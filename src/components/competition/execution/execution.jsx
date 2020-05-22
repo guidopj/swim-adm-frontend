@@ -23,10 +23,15 @@ const CompetitionExecution = props => {
     const [finalTimes, setFinalTimes] = useState([])
     const [finalTimeViewElements, setFinalTimeViewElements] = useState([TextField, TextField, TextField, TextField, TextField])
 
+    const onFocusOut = event => {
+        return !event.currentTarget.contains(document.activeElement)
+    }
+
     const handleKeyPress = (event, idx) => {
         const time = event.target.value
         const finalTime = time.length === 5 ? "0" + time : time
-        if(event.key === 'Enter'){
+
+        if(event.key === 'Enter' || onFocusOut(event)){
             const valid = moment(finalTime, ['mmssSS', 'ssSS'], true);
             if(valid.isValid()){
                 const finalFormatedTime = valid.format("mm:ss.SS")
@@ -93,6 +98,7 @@ const CompetitionExecution = props => {
                                                 label="Final Time"
                                                 type="number"
                                                 onKeyUp={(event) => handleKeyPress(event, idx)}
+                                                onBlur={(event) => handleKeyPress(event, idx)}
                                             >
                                                 {finalTimes[idx]}
                                             </Moment>

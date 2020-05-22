@@ -20,6 +20,7 @@
     "enzyme-to-json": "^3.4.4",
     "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
+    "jest-coverage-badges": "^1.1.2",
     "lint-staged": "^10.1.3",
     "material-ui": "^0.20.2",
     "material-ui-image": "^3.2.3",
@@ -47,7 +48,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "npm run test && npm test -- --coverage && jest-coverage-badges"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
@@ -67,6 +69,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary"
     ]
   }
 }
