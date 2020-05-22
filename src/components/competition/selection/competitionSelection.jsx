@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'material-ui-image'
 import { withRouter } from 'react-router-dom';
 
-import ListWithSuspense from 'components/helpers/listWithSuspense'
+import GenericList from 'components/helpers/genericList'
 
 import competitionSelectionStyles from './competitionSelectionStyles'
 
@@ -66,9 +66,9 @@ const CompetitionSelection = props => {
               </Button>
               
             </form>
-              <ListWithSuspense
-                getCompetition={props.getCompetition}
-                competitionNames={props.competitionNames}
+              <GenericList
+                onItemClick={props.getCompetition}
+                listItems={props.competitionNames}
                 listSubHeader="Existing competitions"
                 classList={classes.list}
                 classListItem={classes.listItem}

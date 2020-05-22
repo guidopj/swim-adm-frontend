@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -9,23 +10,18 @@ import TableRow from '@material-ui/core/TableRow'
 import Moment from 'react-moment';
 import moment from 'moment'
 import Paper from '@material-ui/core/Paper';
-import executionStyles from './executionStyles'
 import TextField from '@material-ui/core/TextField';
 import Label from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
+
+import executionStyles from './executionStyles'
+import GenericList from 'components/helpers/genericList'
 
 const CompetitionExecution = props => {
     const classes = executionStyles();
 
     const [finalTimes, setFinalTimes] = useState([])
     const [finalTimeViewElements, setFinalTimeViewElements] = useState([TextField, TextField, TextField, TextField, TextField])
-    const [lastTimeModified, setLastTimeModified] = useState(0)
-
-    useLayoutEffect(() => {
-        if (finalTimes.length) {
-            console.log(finalTimes)
-            setFinalTimeViewElements(Object.assign([...finalTimeViewElements], {[lastTimeModified]: Label}))
-        }
-    }, [finalTimes])
 
     const handleKeyPress = (event, idx) => {
         const time = event.target.value
@@ -34,8 +30,8 @@ const CompetitionExecution = props => {
             const valid = moment(finalTime, ['mmssSS', 'ssSS'], true);
             if(valid.isValid()){
                 const finalFormatedTime = valid.format("mm:ss.SS")
-                setLastTimeModified(idx)
                 setFinalTimes(Object.assign([...finalTimes], {[idx]: finalFormatedTime}))
+                setFinalTimeViewElements(Object.assign([...finalTimeViewElements], {[idx]: Label}))
             } else {
                 console.log("NOT VALID")
             }
@@ -46,11 +42,26 @@ const CompetitionExecution = props => {
     
   
     return (
-        <div>
-            <div className={classes.root}>
-                    <Grid container direction="row" spacing={2}> 
-                        <Grid item>
-                            <TableContainer component={Paper} >
+        <div className={classes.root}>
+            <Grid container direction="column" spacing={2}>
+                <Grid item xs={4}>
+                    <GenericList
+                        onItemClick={props.getCompetition}
+                        listItems={props.eventsByName}
+                        listSubHeader="Events"
+                        classList={classes.list}
+                        classListItem={classes.listItem}
+                    />
+                </Grid>
+                <Grid item xs={4}>
+                    <ButtonGroup size="large" variant="outlined" color="primary" aria-label="large contained button group">
+                        {Array(6).fill().map((_, i) =>
+                              <Button>{i + 1}</Button>
+                        )}
+                    </ButtonGroup>
+                </Grid>
+                <Grid item>
+                    <TableContainer component={Paper} >
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
@@ -96,10 +107,9 @@ const CompetitionExecution = props => {
                                 ))}
                             </TableBody>
                         </Table>
-                    </TableContainer>
-                    </Grid>
-                </Grid>
-        </div>
+            </TableContainer>
+            </Grid>
+        </Grid>
     </div>
     )
 }

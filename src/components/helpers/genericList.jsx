@@ -6,11 +6,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Divider from '@material-ui/core/Divider';
 import { withRouter } from 'react-router-dom';
 
-const ListWithSuspense = props => {
-
-    const getCompetitionDetails = name => {
-        props.getCompetition(name)
-    }
+const GenericList = props => {
 
     return (
         <List 
@@ -23,11 +19,11 @@ const ListWithSuspense = props => {
                 </ListSubheader>
             }>
             <Divider />
-           {props.competitionNames.map(c => {
+           {props.listItems.map(item => {
                 return(
-                    <React.Fragment key={c}>
-                        <ListItem button className={props.classListItem} onClick={() => getCompetitionDetails(c)}>
-                            <ListItemText primary={c} />
+                    <React.Fragment key={item}>
+                        <ListItem button className={props.classListItem} onClick={() => props.onItemClick(item)}>
+                            <ListItemText key={item} primary={item} />
                         </ListItem>
                         <Divider />
                     </React.Fragment>
@@ -38,4 +34,4 @@ const ListWithSuspense = props => {
     );
 }
 
-export default withRouter(ListWithSuspense)
+export default withRouter(GenericList)
