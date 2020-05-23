@@ -1,4 +1,4 @@
-#### Github Status
+#### Travis Status
 
 [![Build Status](https://travis-ci.com/guidopj/swim-adm-frontend.svg?branch=master)](https://travis-ci.com/guidopj/swim-adm-frontend)
 
