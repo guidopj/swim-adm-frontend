@@ -19,6 +19,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
+import GenericTable from 'components/helpers/genericTable/genericTable'
 
  const Event = React.forwardRef((props, ref) => {
     const classes = eventStyles();
@@ -172,44 +173,23 @@ import Typography from '@material-ui/core/Typography';
         </Card>
         <Grid container className={classes.tableContainer}>
             <Grid item md={10}>
-                <TableContainer component={Paper} >
-                <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                    Events
-                </Typography>
-                    <Table aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                {constants.EVENT_TABLE_HEADERS.map(header => (
-                                    <TableCell align="right">{header}</TableCell>
-                                ))}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {props.events && props.events.map(event => (
-                                <TableRow key={event.id}>
-                                    <TableCell component="th" scope="row">
-                                        {event.id}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        {event.meters}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        {event.style}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        {event.category_from_age}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        {event.category_to_age}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        {event.genre}
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                <GenericTable 
+                    tableTitle= "Events"
+                    defaultInitialValue= {"No events created"}
+                    tableHeaders={constants.EVENT_TABLE_HEADERS}
+                    key="id"
+                    valuesList= {props.events}
+                    elements= {
+                        (event) => ({
+                        column1: event.id,
+                        column2: event.meters,
+                        column3: event.style,
+                        column5: event.category_from_age,
+                        column6: event.category_to_age,
+                        column7: event.genre,
+                        })
+                    }                        
+                />
             </Grid>
         </Grid>
     </div>

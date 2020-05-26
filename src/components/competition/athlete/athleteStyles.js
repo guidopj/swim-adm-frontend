@@ -12,8 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
     root: {
         flexGrow: 1,
         marginTop:17,
-        margin: "auto",
-        width: "50%",
     },
 
     select: {
@@ -29,6 +27,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
     generalCard: {
         backgroundColor: 'aliceblue',
+        marginLeft: 10,
+        marginRight: 20,
     },
     
     genre: {

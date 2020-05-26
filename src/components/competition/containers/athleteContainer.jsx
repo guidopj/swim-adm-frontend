@@ -11,6 +11,7 @@ const AthleteContainer = props => {
         <Athlete
             createNewAthlete={props.createNewAthlete}
             teams={props.teams}
+            athletes={props.athletes}
         />
     )
 }

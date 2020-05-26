@@ -18,14 +18,6 @@ const CompetitionSelection = props => {
   const classes = competitionSelectionStyles();
   const [competitionName, setCompetitionName] = useState('');
 
-  const moveToCreation = ev => {
-    ev.preventDefault()
-    props.history.push({
-      pathname: '/create',
-      state: { competitionName }
-    })
-  }
-
   return (
     <Grid container component="main" className={classes.root}>
       <Grid item md={6}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -16,6 +16,7 @@ import {
 import MenuItem from '@material-ui/core/MenuItem'
 import athleteStyles from './athleteStyles'
 import constants from 'constants.js'
+import GenericTable from 'components/helpers/genericTable/genericTable'
 
  const CompetitionCreation = props => {
     const classes = athleteStyles();
@@ -26,6 +27,7 @@ import constants from 'constants.js'
     const [genre, setGenre] = useState('');
     const [athleteTeam, setAthleteTeam] = useState('')
     const [athleteDni, setAthleteDni] = useState(0)
+    const [athletesFiltered, setAthletesFiltered] = useState(props.athletes)
     
 
     const createNewAthlete = ev => {
@@ -40,6 +42,12 @@ import constants from 'constants.js'
         })
     }
 
+    useEffect(() => {
+        if(athletesFiltered.length !== props.athletes.length){
+            setAthletesFiltered(getAthletesFrom(athleteTeam))
+        }
+    }, [props.athletes])
+
     const cleanAllFields = () => {
         setAthleteName('')
         setAthleteSurname('')
@@ -48,19 +56,28 @@ import constants from 'constants.js'
         setAthleteTeam('')
         setAthleteDni(0)
     }
+
+    const getAthletesFrom = team => {        
+        return props.athletes.filter(athlete => athlete.team === team)
+    }
+
+    const setFilteredTableByTeam = (team) => {
+        setAthletesFiltered(getAthletesFrom(team))
+        setAthleteTeam(team)
+    }
+
+    const athleteAge = athlete => moment().diff(moment(athlete.date_of_birth), 'years')
     
   
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <div className={classes.root}>
-            <Card className={classes.generalCard}>
-                <CardHeader
-                    title="Create New Athlete"
-                />
-                <CardContent>
-                    
-                    <Grid container>
-                        <Grid item lg={4} xs={12} md={6}>
+                <Grid container direction="row" className={classes.root}>
+                        <Card className={classes.generalCard}>
+                            <CardHeader
+                                title="Create New Athlete"
+                            />
+                        <CardContent>
+                        <Grid item lg={12} xs={12} md={6}>
                             <TextField
                                     type="number"
                                     id="athlete_dni"
@@ -72,7 +89,9 @@ import constants from 'constants.js'
                                     autoFocus
                                     onChange={event => setAthleteDni(event.target.value)}
                                 >
-                                </TextField>
+                            </TextField>
+                        </Grid>
+                        <Grid item lg={4} xs={12} md={6}>
                             <TextField
                                 id="athlete_name"
                                 label="Athlete Name"
@@ -84,6 +103,8 @@ import constants from 'constants.js'
                                 onChange={event => setAthleteName(event.target.value)}
                             >
                             </TextField>
+                        </Grid>
+                        <Grid item lg={4} xs={12} md={6}>
                             <TextField
                                 id="athlete_surname"
                                 label="Athlete Surname"
@@ -95,6 +116,8 @@ import constants from 'constants.js'
                                 onChange={event => setAthleteSurname(event.target.value)}
                             >
                             </TextField>
+                        </Grid>
+                        <Grid item lg={4} xs={12} md={6}>
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="date_of_birth"
@@ -106,13 +129,14 @@ import constants from 'constants.js'
                                     'aria-label': 'change date',
                                 }}
                             />
-                            <Grid item md={6} xs={12} lg={4}>
+                        </Grid>
+                        <Grid item md={6} xs={12} lg={4}>
                             <TextField
                                 id="athlete_team"
                                 select
                                 label="Team"
                                 value={athleteTeam}
-                                onChange={event => setAthleteTeam(event.target.value)}
+                                onChange={event => setFilteredTableByTeam(event.target.value)}
                                 className={classes.team}
                             >
                                 {props.teams.map((team) => (
@@ -122,6 +146,7 @@ import constants from 'constants.js'
                                 ))}
                             </TextField>
                         </Grid>
+                        <Grid item md={6} xs={12} lg={4}>
                             <TextField
                                 className={classes.genre}
                                 id="genre"
@@ -138,7 +163,6 @@ import constants from 'constants.js'
                                 ))}
                             </TextField>
                         </Grid>
-                    </Grid>
             </CardContent>
             <CardActions >
                 <Grid container justify="flex-start" spacing={4} className={classes.actionButtons}>
@@ -170,7 +194,26 @@ import constants from 'constants.js'
                 </Grid>
             </CardActions>
         </Card>
-    </div>
+        <Grid item md={4} xs={12} lg={6}>
+            <GenericTable 
+                tableTitle= "Athletes"
+                defaultInitialValue= {`No athletes created for team ${athleteTeam}`}
+                tableHeaders={constants.ATHLETE_TABLE_HEADERS}
+                key="dni"
+                valuesList= {athletesFiltered}
+                elements= {
+                    (athlete) => ({
+                    column1: athlete.dni,
+                    column2: athlete.name,
+                    column3: athlete.surname,
+                    column4: athleteAge(athlete),
+                    column5: athlete.team,
+                    column6: athlete.genre
+                })
+            }                        
+            />
+        </Grid>
+        </Grid>
         </MuiPickersUtilsProvider>
     )
 }

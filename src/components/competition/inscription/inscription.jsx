@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -38,7 +38,7 @@ import moment from 'moment'
     }
 
     const getAthletesFrom = team => {        
-        return props.athletes.filter(athlete => athlete.team_id === team)
+        return props.athletes.filter(athlete => athlete.team === team)
     }
 
     const getEventsFor = athlete => {
@@ -51,7 +51,7 @@ import moment from 'moment'
     }
 
     const updateSelectableEventsTable = athleteDni => {
-        const athleteFromDni = athletesFiltered.find(athlete => athlete.dni === parseInt(athleteDni, 10))
+        const athleteFromDni = athletesFiltered.find(athlete => athlete.dni === athleteDni)
         setSelectedAthlete(athleteFromDni)
         setEventsFiltered(getEventsFor(athleteFromDni))
     }

@@ -26,7 +26,7 @@ const GenericTable = props => {
                     {props.valuesList.map(current => (
                     <TableRow key={current[props.key]}>
                         {Object.keys(props.elements(current)).map(field => (
-                            <TableCell component="th" scope="row">
+                            <TableCell component="th" scope="row" key={field}>
                                 {props.elements(current)[field]}
                             </TableCell>
                         ))}

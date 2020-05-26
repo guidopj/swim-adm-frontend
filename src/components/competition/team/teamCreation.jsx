@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -25,6 +25,12 @@ import teamCreationStyles from './teamCreationStyles'
     const [teamAdress, setTeamAddress] = useState('');
     const [teamCity, setTeamCity] = useState('');
 
+    const { getTeams } = props
+
+    useEffect(() => {
+        getTeams()
+    }, [ getTeams ])
+
     const createNewTeam = ev => {
         ev.preventDefault()
         props.createNewTeam({
@@ -34,6 +40,14 @@ import teamCreationStyles from './teamCreationStyles'
             team_city: teamCity,
             competition_name: props.competition_name
         })
+        cleanFields()
+    }
+
+    const cleanFields = () => {
+        setTeamName('')
+        setTeamNameAbbr('')
+        setTeamAddress('')
+        setTeamCity('')
     }
     
     return (
@@ -114,7 +128,8 @@ import teamCreationStyles from './teamCreationStyles'
                                     </Grid>
                                     <Grid item md={4} xs={12}>
                                         <Button 
-                                            variant="contained"        
+                                            variant="contained"
+                                            onClick={cleanFields}
                                         >
                                             Clean All Fields
                                         </Button>

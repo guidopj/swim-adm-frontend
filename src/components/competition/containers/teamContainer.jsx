@@ -12,6 +12,7 @@ const TeamContainer = props => {
             createNewTeam={props.createNewTeam}
             teams={props.teams}
             competition_name={props.competition_name}
+            getTeams={props.getTeams}
         />
     )
 }

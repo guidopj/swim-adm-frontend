@@ -47,6 +47,11 @@ const competitionsReducer = (state = initialState, action) => {
                 ...state,
                 events: [...state.events, action.data]
             }
+        case actionTypes.CREATE_NEW_TEAM_SUCCESS:
+            return {
+                ...state,
+                events: [...state.teams, action.data]
+            }
         case actionTypes.ADD_INSCRIPTION:
             return {
                 ...state,

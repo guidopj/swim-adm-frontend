@@ -30,10 +30,10 @@ const teamActions = {
             data
 		}
     },
-    createNewTeamFailure(data) {
+    createNewTeamFailure(error) {
 		return {
             type: actionTypes.CREATE_NEW_TEAM_FAILURE,
-            data
+            error
 		}
 	},
 }
