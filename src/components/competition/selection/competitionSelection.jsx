@@ -41,7 +41,7 @@ const CompetitionSelection = props => {
           <Typography component="h1" variant="h5">
             Select or Create a Competition
           </Typography>
-            <form className={classes.form} onSubmit={moveToCreation}>
+            <form className={classes.form} onSubmit={() => props.moveToCreation(competitionName)}>
               <TextField
                 variant="outlined"
                 margin="normal"

@@ -1,8 +1,7 @@
 const initialState = {
-    competitions: {
-        competitions: []
-    }
+  competitions: {
+    competitions: [],
+  }
+};
     
-  };
-    
-    export default initialState;
+export default initialState;

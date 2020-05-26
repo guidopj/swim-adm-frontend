@@ -55,6 +55,12 @@ const competitionActions = {
 			error,
 		}
 	},
+	moveToCreation(competitionName) {
+		return {
+			type: actionTypes.MOVE_TO_CREATION,
+			competitionName
+		}
+	}
 }
 
 export default competitionActions

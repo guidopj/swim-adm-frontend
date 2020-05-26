@@ -1,27 +1,18 @@
 import actionTypes from 'actions/types'
-import { showSnack } from 'react-redux-snackbar';
+import toastActions from 'actions/toastActions'
 
 const notificationMiddleware = store => next => action => {
   if (action.type === actionTypes.CREATE_EVENT_SUCCESS) {
-    store.dispatch(showSnack('myUniqueId1', {
-      label: 'Yay, that actually worked!',
-      timeout: 7000,
-      button: { label: 'OK, GOT IT' },
-      anchorOrigin: {
-        vertical: "top",
-        horizontal: "right"
-      }
-  }));
+    store.dispatch(toastActions.addSnackbar({
+      type: "success",
+      message: 'Event created successfully'
+    }));
   }
   else if(action.type === actionTypes.CREATE_EVENT_FAILURE){
-    store.dispatch(showSnack('myUniqueId2', {
-      label: 'Yay!',
-      timeout: 2000,
-      button: { label: 'OK, GOT IT', color: 'red' },
-      theming: {
-        buttonColor : 'red',
-      }
-  }));
+    store.dispatch(toastActions.addSnackbar({
+      type: "error",
+      message: 'Could not create the event'
+    }));
   }
   return next(action);
 };
