@@ -42,11 +42,13 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
         })
     }
 
+    const { athletes, getAthletesFrom } = props
+
     useEffect(() => {
-        if(athletesFiltered.length !== props.athletes.length){
+        if(athleteTeam){
             setAthletesFiltered(getAthletesFrom(athleteTeam))
         }
-    }, [props.athletes])
+    }, [athletes ,setAthletesFiltered, getAthletesFrom, athleteTeam])
 
     const cleanAllFields = () => {
         setAthleteName('')
@@ -55,15 +57,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
         setGenre('')
         setAthleteTeam('')
         setAthleteDni(0)
-    }
-
-    const getAthletesFrom = team => {        
-        return props.athletes.filter(athlete => athlete.team === team)
-    }
-
-    const setFilteredTableByTeam = (team) => {
-        setAthletesFiltered(getAthletesFrom(team))
-        setAthleteTeam(team)
     }
 
     const athleteAge = athlete => moment().diff(moment(athlete.date_of_birth), 'years')
@@ -136,7 +129,7 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                                 select
                                 label="Team"
                                 value={athleteTeam}
-                                onChange={event => setFilteredTableByTeam(event.target.value)}
+                                onChange={event => setAthleteTeam(event.target.value)}
                                 className={classes.team}
                             >
                                 {props.teams.map((team) => (

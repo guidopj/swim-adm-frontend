@@ -8,6 +8,7 @@ export default createSelector(
 		return {
 			athletes: competition.athletes,
 			teams: competition.teams,
+			getAthletesFrom: team => competition.athletes.filter(athlete => athlete.team === team)
 		}
 	}
 )

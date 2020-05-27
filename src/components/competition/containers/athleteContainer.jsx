@@ -12,6 +12,7 @@ const AthleteContainer = props => {
             createNewAthlete={props.createNewAthlete}
             teams={props.teams}
             athletes={props.athletes}
+            getAthletesFrom={props.getAthletesFrom}
         />
     )
 }
