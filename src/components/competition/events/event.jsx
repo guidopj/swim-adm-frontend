@@ -181,7 +181,7 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                     valuesList= {props.events}
                     elements= {
                         (event) => ({
-                        column1: event.id,
+                        column1: event.eventNro,
                         column2: event.meters,
                         column3: event.style,
                         column5: event.category_from_age,

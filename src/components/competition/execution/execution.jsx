@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Label from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import executionStyles from './executionStyles'
 import GenericList from 'components/helpers/genericList'
@@ -59,6 +60,9 @@ const CompetitionExecution = props => {
                     />
                 </Grid>
                 <Grid item xs={4}>
+                    <Typography component="h1">
+                        Heats
+                    </Typography>
                     <ButtonGroup size="large" variant="outlined" color="primary" aria-label="large contained button group">
                         {Array(6).fill().map((_, i) =>
                               <Button>{i + 1}</Button>
@@ -82,7 +86,7 @@ const CompetitionExecution = props => {
                                 {props.athletes && props.athletes.map((athlete, idx) => (
                                     <TableRow key={athlete.dni}>
                                         <TableCell component="th" scope="row">
-                                            {idx}
+                                            {idx + 1}
                                         </TableCell>
                                         <TableCell align="right">
                                             {athlete.surname} {athlete.name}

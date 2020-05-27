@@ -127,9 +127,9 @@ import moment from 'moment'
                     elements= {
                         event => ({
                             column1: <Checkbox
-                                        checked={props.inscriptions.some(inscription => inscription.athlete === selectedAthlete.dni && inscription.event === event.id)}
+                                        checked={props.inscriptions.some(inscription => inscription.athlete === selectedAthlete.dni && inscription.event === event.eventNro)}
                                         color="primary"
-                                        onChange={ev => handleInscriptionChange(ev, {athlete: selectedAthlete.dni, event: event.id})} 
+                                        onChange={ev => handleInscriptionChange(ev, {athlete: selectedAthlete.dni, event: event.eventNro})} 
                                     />,
                             column2: event.id,
                             column3: event.meters,
@@ -141,9 +141,8 @@ import moment from 'moment'
                     }                        
                 />
             </Grid>
-        </Grid>
 
-        <Grid container
+        <Grid item
             spacing={4}
             className={classes.footer} 
             direction="row"
@@ -174,6 +173,7 @@ import moment from 'moment'
                     </Button>
                 </Link> 
             </Grid>
+        </Grid>
         </Grid>
     </div>
     )
