@@ -37,7 +37,8 @@ import moment from 'moment'
         return age >= minAge && age <= maxAge
     }
 
-    const getAthletesFrom = team => {        
+    const getAthletesFrom = team => {      
+        console.log(props.athletes)  
         return props.athletes.filter(athlete => athlete.team === team)
     }
 
@@ -145,9 +146,6 @@ import moment from 'moment'
         <Grid item
             spacing={4}
             className={classes.footer} 
-            direction="row"
-            justify="center"
-            alignItems="center"
         >
             <Grid item md={4} xs={12}>
                 <Button

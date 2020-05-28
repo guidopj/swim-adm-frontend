@@ -42,13 +42,18 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
         })
     }
 
-    const { athletes, getAthletesFrom } = props
+    const { athletes } = props
 
     useEffect(() => {
+
+        const getAthletesFrom = team => {      
+            return athletes.filter(athlete => athlete.team === team)
+        }
+
         if(athleteTeam){
             setAthletesFiltered(getAthletesFrom(athleteTeam))
         }
-    }, [athletes ,setAthletesFiltered, getAthletesFrom, athleteTeam])
+    }, [athletes ,setAthletesFiltered, athleteTeam])
 
     const cleanAllFields = () => {
         setAthleteName('')

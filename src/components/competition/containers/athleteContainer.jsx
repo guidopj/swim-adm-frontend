@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import athleteSelector from 'selectors/athlete/athleteSelector'
+import { athleteSelector } from 'selectors/athlete/athleteSelector'
 import { bindActionCreators } from 'redux'
 import Athlete from 'components/competition/athlete/athlete'
 import athleteActions from 'actions/athleteActions'
@@ -12,7 +12,6 @@ const AthleteContainer = props => {
             createNewAthlete={props.createNewAthlete}
             teams={props.teams}
             athletes={props.athletes}
-            getAthletesFrom={props.getAthletesFrom}
         />
     )
 }
