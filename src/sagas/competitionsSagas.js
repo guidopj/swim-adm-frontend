@@ -10,25 +10,27 @@ import competitionSync from 'sync/competitionSync'
 import actionTypes from 'actions/types'
 
 
-function *createNewCompetition(data) {
+function *createNewCompetition(payload) {
 	try {
+		const competitionData = payload.data
 		yield call(
 			competitionSync.createNewCompetition,
-			data.data
+			competitionData
 		)
-		yield put(competitionActions.createNewCompetitionSuccess(data))
+		yield put(competitionActions.createNewCompetitionSuccess(competitionData))
 	} catch (error) {
 		yield put(competitionActions.createNewCompetitionFailure(error))
 	}
 }
 
-function *createNewTeam(data) {
+function *createNewTeam(payload) {
 	try {
+		const teamData = payload.data
 		yield call(
 			competitionSync.createNewTeam,
-			data.data
+			teamData
 		)
-		yield put(teamActions.createNewTeamSuccess(data))
+		yield put(teamActions.createNewTeamSuccess(teamData))
 	} catch (error) {
 		yield put(teamActions.createNewTeamFailure(error))
 	}

@@ -28,6 +28,12 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
     const [athleteTeam, setAthleteTeam] = useState('')
     const [athleteDni, setAthleteDni] = useState(0)
     const [athletesFiltered, setAthletesFiltered] = useState(props.athletes)
+
+    const { athletes, getAthletes } = props
+
+    useEffect(() => {
+        getAthletes()
+    }, [ getAthletes ])
     
 
     const createNewAthlete = ev => {
@@ -41,8 +47,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
             team: athleteTeam
         })
     }
-
-    const { athletes } = props
 
     useEffect(() => {
 
@@ -192,7 +196,7 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                 </Grid>
             </CardActions>
         </Card>
-        <Grid item md={4} xs={12} lg={6}>
+        <Grid item md={6} xs={12} lg={6}>
             <GenericTable 
                 tableTitle= "Athletes"
                 defaultInitialValue= {`No athletes created for team ${athleteTeam}`}

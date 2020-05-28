@@ -51,16 +51,9 @@ const competitionsReducer = (state = initialState, action) => {
         case actionTypes.CREATE_NEW_TEAM_SUCCESS:
             return {
                 ...state,
-                events: [...state.teams, action.data]
+                teams: [...state.teams, action.data]
             }
         case actionTypes.ADD_INSCRIPTION:
-            if(Object.keys(state.inscriptions).includes(action.inscription.event)){
-                const newInscriptions = Object.assign([...state.inscriptions], { [action.inscription.event]: [...state.inscriptions[action.inscription.event], action.inscription.athlete] })
-                console.log(newInscriptions)
-            } else {
-                const newInscriptions = Object.assign([...state.inscriptions], { [action.inscription.event]: [action.inscription.athlete] })
-                console.log(newInscriptions)
-            }
             return {
                 ...state,
                 inscriptions: [...state.inscriptions, action.inscription]

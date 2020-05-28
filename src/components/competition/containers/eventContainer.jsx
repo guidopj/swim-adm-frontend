@@ -6,7 +6,7 @@ import eventActions from 'actions/eventActions'
 import Event from 'components/competition/events/event'
 import eventSelector from 'selectors/event/eventSelector'
 
-const TeamContainer = props => {
+const EventContainer = props => {
     return (
         <Event
             createEvent={props.createEvent}
@@ -27,5 +27,5 @@ function mapDispatchToProps(dispatch) {
   }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-	TeamContainer
+	EventContainer
 )

@@ -12,6 +12,7 @@ const AthleteContainer = props => {
             createNewAthlete={props.createNewAthlete}
             teams={props.teams}
             athletes={props.athletes}
+            getAthletes={props.getAthletes}
         />
     )
 }
@@ -23,6 +24,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ 
         createNewAthlete: athleteActions.createNewAthlete,
+        getAthletes: athleteActions.getAthletes,
      }, dispatch)
   }
 
