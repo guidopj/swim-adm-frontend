@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -17,8 +17,10 @@ import MenuItem from '@material-ui/core/MenuItem'
 import athleteStyles from './athleteStyles'
 import constants from 'constants.js'
 import GenericTable from 'components/helpers/genericTable/genericTable'
+import { athleteAge } from 'helpers/athleteHelper.js'
+import useAthletesFiltered from 'decorators/useAthletesFiltered'
 
- const CompetitionCreation = props => {
+ const AthleteCreation = props => {
     const classes = athleteStyles();
 
     const [athleteName, setAthleteName] = useState('');
@@ -27,15 +29,8 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
     const [genre, setGenre] = useState('');
     const [athleteTeam, setAthleteTeam] = useState('')
     const [athleteDni, setAthleteDni] = useState(0)
-    const [athletesFiltered, setAthletesFiltered] = useState(props.athletes)
-
-    const { athletes, getAthletes } = props
-
-    useEffect(() => {
-        getAthletes()
-    }, [ getAthletes ])
+    const athletesFiltered = useAthletesFiltered(props.athletes, athleteTeam);
     
-
     const createNewAthlete = ev => {
         ev.preventDefault()
         props.createNewAthlete({
@@ -48,17 +43,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
         })
     }
 
-    useEffect(() => {
-
-        const getAthletesFrom = team => {      
-            return athletes.filter(athlete => athlete.team === team)
-        }
-
-        if(athleteTeam){
-            setAthletesFiltered(getAthletesFrom(athleteTeam))
-        }
-    }, [athletes ,setAthletesFiltered, athleteTeam])
-
     const cleanAllFields = () => {
         setAthleteName('')
         setAthleteSurname('')
@@ -67,8 +51,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
         setAthleteTeam('')
         setAthleteDni(0)
     }
-
-    const athleteAge = athlete => moment().diff(moment(athlete.date_of_birth), 'years')
     
   
     return (
@@ -201,7 +183,7 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                 tableTitle= "Athletes"
                 defaultInitialValue= {`No athletes created for team ${athleteTeam}`}
                 tableHeaders={constants.ATHLETE_TABLE_HEADERS}
-                key="dni"
+                distinguish_by= "dni"
                 valuesList= {athletesFiltered}
                 elements= {
                     (athlete) => ({
@@ -221,4 +203,4 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
 }
 
 
-export default CompetitionCreation
+export default AthleteCreation

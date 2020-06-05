@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { athleteSelector } from 'selectors/athlete/athleteSelector'
@@ -7,12 +7,18 @@ import Athlete from 'components/competition/athlete/athlete'
 import athleteActions from 'actions/athleteActions'
 
 const AthleteContainer = props => {
+
+    const { getAthletes } = props
+    
+    useEffect(() => {
+        getAthletes()
+    }, [ getAthletes ])
+
     return (
         <Athlete
             createNewAthlete={props.createNewAthlete}
             teams={props.teams}
             athletes={props.athletes}
-            getAthletes={props.getAthletes}
         />
     )
 }

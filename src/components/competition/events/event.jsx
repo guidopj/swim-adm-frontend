@@ -7,13 +7,13 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import _ from 'lodash';
 import constants from 'constants.js'
 import eventStyles from './eventStyles'
 import MenuItem from '@material-ui/core/MenuItem'
 import GenericTable from 'components/helpers/genericTable/genericTable'
+import { filterPosibleAges } from 'helpers/athleteHelper.js'
 
- const Event = React.forwardRef((props, ref) => {
+ const Event = props => {
     const classes = eventStyles();
 
     const [meters, setMeters] = useState(25);
@@ -33,23 +33,18 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
             competition_name: props.competitionName,
         })
     }
-
-    const filterPosibleAges = () => {
-        return _.filter(constants.AGES, age => {return age > ageFrom})
-    }
   
     return (
             <div>
             <Card className={classes.generalCard}>
                 <CardHeader
-                    title={"Create New Event"}
+                    title="Create New Event"
                 />
                 <CardContent>
                     
                     <Grid container spacing={2}>
                         <Grid item lg={4} xs={12} md={6}>
                             <TextField
-                                ref={ref}
                                 id="event_style"
                                 select
                                 label="meters"
@@ -66,7 +61,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                         </Grid>
                         <Grid item md={6} xs={12} lg={4}>
                             <TextField
-                                ref={ref}
                                 id="event_style"
                                 select
                                 label="style"
@@ -83,7 +77,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                         </Grid>
                         <Grid item md={6} xs={12} lg={4}>
                             <TextField
-                                ref={ref}
                                 className={classes.select}
                                 id="genre"
                                 select
@@ -100,7 +93,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                         </Grid>
                         <Grid item md={3} xs={12} lg={4}>
                             <TextField
-                                ref={ref}
                                 className={classes.select}
                                 id="age_from"
                                 select
@@ -117,7 +109,6 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
                         </Grid>
                         <Grid item md={3} xs={12} lg={4}>
                             <TextField
-                                ref={ref}
                                 className={classes.select}
                                 id="age_to"
                                 select
@@ -167,9 +158,9 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
             <Grid item md={10}>
                 <GenericTable 
                     tableTitle= "Events"
-                    defaultInitialValue= {"No events created"}
+                    defaultInitialValue= "No events created"
                     tableHeaders={constants.EVENT_TABLE_HEADERS}
-                    key="id"
+                    distinguish_by="eventNro"
                     valuesList= {props.events}
                     elements= {
                         (event) => ({
@@ -186,7 +177,7 @@ import GenericTable from 'components/helpers/genericTable/genericTable'
         </Grid>
     </div>
     )
-})
+}
 
 
 export default Event

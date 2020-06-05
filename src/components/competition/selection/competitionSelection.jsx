@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'material-ui-image'
 import { withRouter } from 'react-router-dom';
 
-import GenericList from 'components/helpers/genericList'
+import GenericList from 'components/helpers/genericList/genericList'
 
 import competitionSelectionStyles from './competitionSelectionStyles'
 

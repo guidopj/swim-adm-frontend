@@ -16,7 +16,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import executionStyles from './executionStyles'
-import GenericList from 'components/helpers/genericList'
+import GenericList from 'components/helpers/genericList/genericList'
 
 const CompetitionExecution = props => {
     const classes = executionStyles();
@@ -44,9 +44,6 @@ const CompetitionExecution = props => {
         }
     }
 
-
-    
-  
     return (
         <div className={classes.root}>
             <Grid container direction="column" spacing={2}>
@@ -65,7 +62,7 @@ const CompetitionExecution = props => {
                     </Typography>
                     <ButtonGroup size="large" variant="outlined" color="primary" aria-label="large contained button group">
                         {Array(6).fill().map((_, i) =>
-                              <Button>{i + 1}</Button>
+                              <Button key={i}>{i + 1}</Button>
                         )}
                     </ButtonGroup>
                 </Grid>

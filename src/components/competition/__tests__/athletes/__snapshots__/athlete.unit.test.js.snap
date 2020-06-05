@@ -1,0 +1,733 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Athlete with state and props renders correctly 1`] = `
+<div
+  className="MuiGrid-root makeStyles-root-2 MuiGrid-container"
+>
+  <div
+    className="MuiPaper-root MuiCard-root makeStyles-generalCard-6 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardHeader-root"
+    >
+      <div
+        className="MuiCardHeader-content"
+      >
+        <span
+          className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+        >
+          Create New Athlete
+        </span>
+      </div>
+    </div>
+    <div
+      className="MuiCardContent-root"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-12"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
+            data-shrink={true}
+            htmlFor="athlete_dni"
+            id="athlete_dni-label"
+          >
+            Athlete DNI
+            <span
+              aria-hidden={true}
+              className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+            >
+               
+              *
+            </span>
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={true}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              id="athlete_dni"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="number"
+              value={0}
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-236 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-238 PrivateNotchedOutline-legendNotched-239"
+              >
+                <span>
+                  Athlete DNI
+                   *
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+            data-shrink={false}
+            htmlFor="athlete_name"
+            id="athlete_name-label"
+          >
+            Athlete Name
+            <span
+              aria-hidden={true}
+              className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+            >
+               
+              *
+            </span>
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-describedby="athlete_name-helper-text"
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              id="athlete_name"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-236 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-238"
+              >
+                <span>
+                  Athlete Name
+                   *
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          <p
+            className="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+            id="athlete_name-helper-text"
+          >
+            Athlete Name
+          </p>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+            data-shrink={false}
+            htmlFor="athlete_surname"
+            id="athlete_surname-label"
+          >
+            Athlete Surname
+            <span
+              aria-hidden={true}
+              className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+            >
+               
+              *
+            </span>
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-describedby="athlete_surname-helper-text"
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              disabled={false}
+              id="athlete_surname"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-236 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-238"
+              >
+                <span>
+                  Athlete Surname
+                   *
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          <p
+            className="MuiFormHelperText-root MuiFormHelperText-contained Mui-required"
+            id="athlete_surname-helper-text"
+          >
+            Athlete Surname
+          </p>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+            data-shrink={true}
+            htmlFor="date_of_birth"
+            id="date_of_birth-label"
+          >
+            Date of Birth
+          </label>
+          <div
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
+              disabled={false}
+              id="date_of_birth"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value="2020-06-04"
+            />
+            <div
+              className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
+            >
+              <button
+                aria-label="change date"
+                className="MuiButtonBase-root MuiIconButton-root"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                    />
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root makeStyles-team-8"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink={false}
+            htmlFor="athlete_team"
+            id="athlete_team-label"
+          >
+            Team
+          </label>
+          <div
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+            onClick={[Function]}
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="athlete_team-label athlete_team"
+              className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="athlete_team"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&#8203;",
+                  }
+                }
+              />
+            </div>
+            <input
+              autoFocus={false}
+              onAnimationStart={[Function]}
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root makeStyles-genre-7"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink={false}
+            htmlFor="genre"
+            id="genre-label"
+          >
+            genre
+          </label>
+          <div
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+            onClick={[Function]}
+          >
+            <div
+              aria-haspopup="listbox"
+              aria-labelledby="genre-label genre"
+              className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+              id="genre"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&#8203;",
+                  }
+                }
+              />
+            </div>
+            <input
+              aria-describedby="genre-helper-text"
+              autoFocus={false}
+              onAnimationStart={[Function]}
+              type="hidden"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSelect-icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiFormHelperText-root"
+            id="genre-helper-text"
+          >
+            Athlete gerne
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiCardActions-root MuiCardActions-spacing"
+    >
+      <div
+        className="MuiGrid-root makeStyles-actionButtons-5 MuiGrid-container MuiGrid-spacing-xs-4"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Create New Athlete
+            </span>
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4"
+        >
+          <button
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label"
+            >
+              Clean All Fields
+            </span>
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4"
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+          >
+            <button
+              className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+              disabled={false}
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label"
+              >
+                Go Back
+              </span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+  >
+    <div
+      className="MuiPaper-root MuiTableContainer-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <h6
+        className="MuiTypography-root MuiTypography-h6"
+        id="tableTitle"
+      >
+        Athletes
+      </h6>
+      <table
+        aria-label="simple table"
+        className="MuiTable-root"
+        role={null}
+      >
+        <thead
+          className="MuiTableHead-root"
+          role={null}
+        >
+          <tr
+            className="MuiTableRow-root MuiTableRow-head"
+            role={null}
+          >
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              DNI
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              NAME
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              SURNAME
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              AGE
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              TEAM
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              GENRE
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          className="MuiTableBody-root"
+          role={null}
+        >
+          <tr
+            className="MuiTableRow-root"
+            role={null}
+          >
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              111
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              first athlete
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              first athlete
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              20
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            />
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              Male
+            </th>
+          </tr>
+          <tr
+            className="MuiTableRow-root"
+            role={null}
+          >
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              222
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              second athlete
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              second athlete
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              20
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            />
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              Male
+            </th>
+          </tr>
+          <tr
+            className="MuiTableRow-root"
+            role={null}
+          >
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              333
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              third athlete
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              third athlete
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              20
+            </th>
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            />
+            <th
+              aria-sort={null}
+              className="MuiTableCell-root MuiTableCell-body"
+              role="cell"
+              scope="row"
+            >
+              Male
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;

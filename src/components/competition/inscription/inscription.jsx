@@ -12,8 +12,8 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Checkbox from '@material-ui/core/Checkbox';
 import Radio from '@material-ui/core/Radio';
 import GenericTable from 'components/helpers/genericTable/genericTable'
-import moment from 'moment'
-
+import { athletesFromDni, getAthletesFrom, athleteAge } from 'helpers/athleteHelper.js'
+import { getEventsFor } from 'helpers/eventHelper.js'
  const Inscription = props => {
     const classes = inscriptionStyles();
 
@@ -30,29 +30,13 @@ import moment from 'moment'
         })
     }
 
-    const athleteAge = athlete => moment().diff(moment(athlete.date_of_birth), 'years')
-
-    const ageBetween = (athlete, minAge, maxAge) => {
-        const age = athleteAge(athlete)
-        return age >= minAge && age <= maxAge
-    }
-
-    const getAthletesFrom = team => {      
-        console.log(props.athletes)  
-        return props.athletes.filter(athlete => athlete.team === team)
-    }
-
-    const getEventsFor = athlete => {
-        return props.events.filter(event => event.genre === athlete.genre && ageBetween(athlete, event.category_from_age, event.category_to_age ))
-    }
-
     const updateInscriptionTable = team => {
         setTeam(team)
         setAthletesFiltered(getAthletesFrom(team))
     }
 
     const updateSelectableEventsTable = athleteDni => {
-        const athleteFromDni = athletesFiltered.find(athlete => athlete.dni === athleteDni)
+        const athleteFromDni = athletesFromDni(props.athletes, athleteDni)
         setSelectedAthlete(athleteFromDni)
         setEventsFiltered(getEventsFor(athleteFromDni))
     }
