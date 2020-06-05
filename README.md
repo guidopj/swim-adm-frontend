@@ -1,8 +1,20 @@
+#### RUN
+
+git clone git@github.com:guidopj/swim-adm-frontend.git
+
+cd swim-adm-frontend
+
+yarn install
+
+npm run start
+
+
 #### Travis Status
 
 [![Build Status](https://travis-ci.com/guidopj/swim-adm-frontend.svg?branch=master)](https://travis-ci.com/guidopj/swim-adm-frontend)
 
 #### Test Coverage
+
 [![Coverage Status](https://coveralls.io/repos/github/guidopj/swim-adm-frontend/badge.svg?branch=master)](https://coveralls.io/github/guidopj/swim-adm-frontend?branch=master)
 
 #### Logo
