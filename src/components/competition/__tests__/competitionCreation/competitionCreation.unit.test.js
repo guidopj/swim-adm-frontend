@@ -1,5 +1,5 @@
 import React from 'react';
-import CompetitionCreation from 'components/competition/creation/CompetitionCreation';
+import CompetitionCreation from 'components/competition/creation/competitionCreation';
 import renderer from 'react-test-renderer';
 import history from 'history.js'
 import { ConnectedRouter } from 'connected-react-router'

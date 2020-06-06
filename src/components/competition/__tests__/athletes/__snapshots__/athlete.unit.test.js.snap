@@ -232,7 +232,7 @@ exports[`Athlete with state and props renders correctly 1`] = `
               onFocus={[Function]}
               required={false}
               type="text"
-              value="2020-06-04"
+              value="2017-02-13"
             />
             <div
               className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
@@ -606,7 +606,7 @@ exports[`Athlete with state and props renders correctly 1`] = `
               role="cell"
               scope="row"
             >
-              20
+              16
             </th>
             <th
               aria-sort={null}
@@ -657,7 +657,7 @@ exports[`Athlete with state and props renders correctly 1`] = `
               role="cell"
               scope="row"
             >
-              20
+              16
             </th>
             <th
               aria-sort={null}
@@ -708,7 +708,7 @@ exports[`Athlete with state and props renders correctly 1`] = `
               role="cell"
               scope="row"
             >
-              20
+              16
             </th>
             <th
               aria-sort={null}
