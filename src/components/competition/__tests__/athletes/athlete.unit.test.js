@@ -59,7 +59,7 @@ const { store } = configureStore({
   })
 
   beforeAll(() => {
-    jest.spyOn(Date, 'now').mockImplementation(() => 1487076708000);
+    jest.spyOn(Date, 'now').mockImplementation(() => 1111111111111);
 });
 
   it('renders correctly', () => {
