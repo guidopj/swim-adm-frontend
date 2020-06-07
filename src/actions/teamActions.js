@@ -24,18 +24,24 @@ const teamActions = {
             data
 		}
     },
-    createNewTeamSuccess(data) {
+      createNewTeamSuccess(data) {
 		return {
             type: actionTypes.CREATE_NEW_TEAM_SUCCESS,
             data
 		}
-    },
-    createNewTeamFailure(error) {
+      },
+      openEditTeamModal(team) {
 		return {
-            type: actionTypes.CREATE_NEW_TEAM_FAILURE,
-            error
+            type: actionTypes.OPEN_EDIT_TEAM_MODAL,
+            team
 		}
-	},
+      },
+      openDeleteTeamModal(team) {
+		return {
+            type: actionTypes.OPEN_DELETE_TEAM_MODAL,
+            team
+		}
+    },
 }
 
 export default teamActions

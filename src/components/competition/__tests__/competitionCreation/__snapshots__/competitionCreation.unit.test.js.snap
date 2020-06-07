@@ -147,12 +147,12 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
             className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
           >
             <div
-              className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
               onClick={[Function]}
             >
               <input
                 aria-describedby="competition_start_date-helper-text"
-                aria-invalid={true}
+                aria-invalid={false}
                 autoFocus={false}
                 className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
                 disabled={false}
@@ -163,6 +163,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
+                value="2005-03-17"
               />
               <div
                 className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
@@ -208,7 +209,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
               </div>
             </div>
             <p
-              className="MuiFormHelperText-root Mui-error"
+              className="MuiFormHelperText-root MuiFormHelperText-filled"
               id="competition_start_date-helper-text"
             >
               Select a valid competition start date
@@ -222,12 +223,12 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
             className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
           >
             <div
-              className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
               onClick={[Function]}
             >
               <input
                 aria-describedby="competition_end_date-helper-text"
-                aria-invalid={true}
+                aria-invalid={false}
                 autoFocus={false}
                 className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
                 disabled={false}
@@ -238,6 +239,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
+                value="2005-03-17"
               />
               <div
                 className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
@@ -283,7 +285,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
               </div>
             </div>
             <p
-              className="MuiFormHelperText-root Mui-error"
+              className="MuiFormHelperText-root MuiFormHelperText-filled"
               id="competition_end_date-helper-text"
             >
               Select a valid competition end date
@@ -297,12 +299,12 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
             className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
           >
             <div
-              className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
               onClick={[Function]}
             >
               <input
                 aria-describedby="time-picker-helper-text"
-                aria-invalid={true}
+                aria-invalid={false}
                 autoFocus={false}
                 className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
                 disabled={false}
@@ -313,6 +315,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
+                value="22:58:31"
               />
               <div
                 className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
@@ -358,7 +361,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
               </div>
             </div>
             <p
-              className="MuiFormHelperText-root Mui-error"
+              className="MuiFormHelperText-root MuiFormHelperText-filled"
               id="time-picker-helper-text"
             >
               Select a valid starting time
@@ -372,12 +375,12 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
             className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
           >
             <div
-              className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
               onClick={[Function]}
             >
               <input
                 aria-describedby="inscription_start_date-helper-text"
-                aria-invalid={true}
+                aria-invalid={false}
                 autoFocus={false}
                 className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
                 disabled={false}
@@ -388,6 +391,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
+                value="2005-03-17 22:58:31"
               />
               <div
                 className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
@@ -433,7 +437,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
               </div>
             </div>
             <p
-              className="MuiFormHelperText-root Mui-error"
+              className="MuiFormHelperText-root MuiFormHelperText-filled"
               id="inscription_start_date-helper-text"
             >
               Select a valid inscription start date
@@ -447,12 +451,12 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
             className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal"
           >
             <div
-              className="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
+              className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedEnd"
               onClick={[Function]}
             >
               <input
                 aria-describedby="inscription_End_date-helper-text"
-                aria-invalid={true}
+                aria-invalid={false}
                 autoFocus={false}
                 className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd"
                 disabled={false}
@@ -463,6 +467,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
+                value="2005-03-17 22:58:31"
               />
               <div
                 className="MuiInputAdornment-root MuiInputAdornment-positionEnd"
@@ -508,7 +513,7 @@ exports[`Competition Creation with state and props renders correctly 1`] = `
               </div>
             </div>
             <p
-              className="MuiFormHelperText-root Mui-error"
+              className="MuiFormHelperText-root MuiFormHelperText-filled"
               id="inscription_End_date-helper-text"
             >
               Select a valid inscription end date

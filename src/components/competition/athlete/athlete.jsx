@@ -166,15 +166,6 @@ import useAthletesFiltered from 'decorators/useAthletesFiltered'
                             Clean All Fields
                         </Button>
                     </Grid>
-                    <Grid item xs={12} md={4}>
-                        <Link to='/'>
-                            <Button 
-                                variant="contained"        
-                            >
-                                Go Back
-                            </Button>
-                        </Link> 
-                    </Grid>
                 </Grid>
             </CardActions>
         </Card>

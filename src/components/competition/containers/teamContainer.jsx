@@ -25,6 +25,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ 
         createNewTeam: teamActions.createNewTeam,
         getTeams: teamActions.getTeams,
+        openEditTeamModal: teamActions.openEditTeamModal,
+        deleteEditTeamModal: teamActions.deleteEditTeamModal,
      }, dispatch)
   }
 

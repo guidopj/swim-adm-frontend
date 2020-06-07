@@ -2,18 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
  import CardActions from '@material-ui/core/CardActions';
  import CardContent from '@material-ui/core/CardContent';
  import CardHeader from '@material-ui/core/CardHeader';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import GenericTable from 'components/helpers/genericTable/genericTable'
+import constants from 'constants.js'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete';
+import {
+    Link,
+  } from "react-router-dom";
 
 import teamCreationStyles from './teamCreationStyles'
 
@@ -49,18 +48,20 @@ import teamCreationStyles from './teamCreationStyles'
         setTeamAddress('')
         setTeamCity('')
     }
+
+    const editTeam = team => {
+        props.openEditTeamModal(team)
+    }
     
     return (
         <div>
             <div className={classes.root}>
-                <Grid container direction="row" spacing={2}> 
-                    <Grid item>
+                <Grid container direction="row"> 
                         <Card className={classes.generalCard}>
                             <CardHeader
                                 title="Create New Team"
                             />
                             <CardContent>
-                                <Grid container>
                                     <Grid item lg={4} xs={12} md={6}>
                                         <TextField
                                             id="team_name"
@@ -100,7 +101,7 @@ import teamCreationStyles from './teamCreationStyles'
                                         >
                                         </TextField>
                                     </Grid>
-                                    <Grid item lg={4} xs={12} md={6}>
+                                    <Grid item lg={4} xs={12} md={12}>
                                         <TextField
                                             id="team_city"
                                             label="Team City"
@@ -114,7 +115,6 @@ import teamCreationStyles from './teamCreationStyles'
                                         </TextField>
                                     </Grid>
                                     
-                                </Grid>
                             </CardContent>
                             <CardActions >
                                 <Grid container justify="flex-start" spacing={4} className={classes.actionButtons}>
@@ -134,45 +134,30 @@ import teamCreationStyles from './teamCreationStyles'
                                             Clean All Fields
                                         </Button>
                                     </Grid>
-                                    <Grid item xs={12} md={4}>
-                                        <Link to='/'>
-                                            <Button 
-                                                variant="contained"        
-                                            >
-                                                Go Back
-                                            </Button>
-                                        </Link> 
-                                    </Grid>
                                 </Grid>
                             </CardActions>
                             
                         </Card>
                     </Grid>
-                    <Grid item>
-                        <TableContainer component={Paper} >
-                    <Table aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>TEAM</TableCell>
-                                <TableCell align="right">ABBR</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {props.teams && props.teams.map(team => (
-                                <TableRow key={team.team_name_abbr}>
-                                    <TableCell component="th" scope="row">
-                                        {team.team_name}
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        {team.team_name_abbr}
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                </Grid>
-            </Grid>
+                    <Grid item lg={6} md={6} xs={12}>
+                        <GenericTable 
+                            tableTitle= "Existing Teams"
+                            defaultInitialValue= "No Teams Created"
+                            tableHeaders={constants.TEAMS_TABLE_HEADERS}
+                            distinguish_by= "team_name_abbr"
+                            valuesList= {props.teams}
+                            elements= {
+                                (team) => ({
+                                    column1: team.team_name,
+                                    column2: team.team_name_abbr,
+                                    column3: team.team_address,
+                                    column4: team.team_city,
+                                    enableEditing: <Link onClick={editTeam}><EditIcon /></Link>,
+                                    enableDeleting: <DeleteIcon />,
+                                })
+                            }
+                        />
+                    </Grid>
         </div>
     </div>
     )

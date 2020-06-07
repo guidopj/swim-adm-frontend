@@ -1,52 +1,63 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+
+import TeamCard from 'components/cards/teamCard'
+import EventCard from 'components/cards/eventCard'
+import InscriptionCard from 'components/cards/inscriptionCard'
+import AthleteCard from 'components/cards/athleteCard'
+import RunCompetitionCard from 'components/cards/runCompetitionCard'
 
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
+  container: {
+    paddingTop: 30,
+    justifyContent: 'flex-start',
   },
+
+  root: {
+    width: 300,
+    height: 300,
+    paddingLeft: 30,
+  },
+
 });
 
 const Home = props => {
-  const classes = useStyles();
+  const classes = useStyles()
      
   return (
-    
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+    <Grid container direction="row" spacing={2} className={classes.container}>
+      <Grid item>
+        <TeamCard
+          classes={classes}
+          moveToTeams={props.moveToTeams}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+      </Grid>
+      <Grid item>
+        <AthleteCard
+          classes={classes}
+          moveToAthletes={props.moveToAthletes}
+        />
+      </Grid>
+      <Grid item>
+        <EventCard
+          classes={classes}
+          moveToEvents={props.moveToEvents}
+        />
+      </Grid>
+      <Grid item>
+        <InscriptionCard
+          classes={classes}
+          moveToInscriptions={props.moveToInscriptions}
+        />
+      </Grid>
+      <Grid item>
+        <RunCompetitionCard
+          classes={classes}
+          moveToInscriptions={props.moveToRunCompetition}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

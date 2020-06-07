@@ -22,13 +22,13 @@ import constants from 'constants.js'
 
  const CompetitionCreation = props => {
     const classes = competitionCreationStyles();
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('')
+    const [startDate, setStartDate] = useState(moment());
+    const [endDate, setEndDate] = useState(moment())
     const [selectedPoolMeters, setSelectedPoolMeters] = useState(25);
     const [clubName, setClubName] = useState('');
-    const [startTime, setStartTime] = useState('');
-    const [inscriptionStartDate, setInscriptionStartDate] = useState('');
-    const [inscriptionEndDate, setInscriptionEndDate] = useState('');
+    const [startTime, setStartTime] = useState(moment());
+    const [inscriptionStartDate, setInscriptionStartDate] = useState(moment());
+    const [inscriptionEndDate, setInscriptionEndDate] = useState(moment());
     const [numberOfLanes, setNumberOfLanes] = useState(5);
 
     const handlePoolMetersChange = event => setSelectedPoolMeters(event.target.value)
@@ -53,7 +53,7 @@ import constants from 'constants.js'
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Card className={classes.generalCard}>
                 <CardHeader
-                    title={"New Competition: " + props.competitionName}
+                    title={`New Competition: ${props.competitionName}`}
                 />
                 <CardContent>
                     

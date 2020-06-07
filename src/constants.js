@@ -1,4 +1,5 @@
 import _ from 'lodash';
+
 const constants = {
     STYLES: ["FREESTYLE", "BACKSTROKE", "BREASTSTROKE", "BUTTERFLY", "MEDLEY"],
     METERS: [25,50,100,200,400,800,1500],
@@ -10,6 +11,7 @@ const constants = {
     EVENT_TABLE_HEADERS: ["NRO", "METERS", "STYLE", "MIN AGE", "MAX AGE", "GENRE"],
     INSCRIPTION_TABLE_HEADERS: ["INSCRIBE", "DNI", "NAME", "SURNAME", "AGE"],
     ATHLETE_TABLE_HEADERS: ["DNI", "NAME", "SURNAME", "AGE", "TEAM", "GENRE"],
+    TEAMS_TABLE_HEADERS: ["TEAM NAME", "TEAM NAME ABBREVIATION", "TEAM ADDRESS", "TEAM CITY"],
 }
 
 export default constants

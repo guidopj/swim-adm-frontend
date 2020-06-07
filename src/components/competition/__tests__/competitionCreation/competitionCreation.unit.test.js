@@ -13,6 +13,10 @@ const { store } = configureStore({
     competitions: {}
   })
 
+  beforeAll(() => {
+    jest.spyOn(Date, 'now').mockImplementation(() => 1111111111111);
+  });
+
   it('renders correctly', () => {
     const component = renderer.create(
         <Provider store={store}>
